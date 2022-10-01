@@ -1,31 +1,18 @@
-body {
-    margin: 0;
-    padding: 0;
-}
-html {
-    margin: 0;
-    padding: 0;
-}
-#background {
-    background-image: url('background.jpeg'); 
-    background-repeat: no-repeat;  
-    background-attachment: fixed;
+body, html {
+    height: 100%;
+  }
+.background {
+    background-image: url('../uploads/background2.png');
+    height: 100%; 
+    background-position: center;
+    background-repeat: no-repeat; 
     background-size: cover;
+    right: 0;
+    left: 0;
+    top: 0;
 }
-#box {
-    background-color: lightgray; 
-    border: 3px;
-    border-radius: 2px;
-    border-color: black;
-    margin-left: 5em; 
-    width: 50em;
-    opacity: 100;
-}
-footer { 
-    margin-bottom: 0; 
-    padding-top: 60px;
-}
-#text {
-    margin-left: 8px;
-    font-size: 1.5em;
+.footer {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
 }
