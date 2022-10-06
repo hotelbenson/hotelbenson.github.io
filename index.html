@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>Hotel Benson</title>
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="css/style.css">
         <meta name="description" content="Hotel Benson">
         <meta name="keywords" content="5-Star Hotel Benson">
         <meta charset="utf-8">
@@ -12,67 +12,51 @@
     </head>
 
     <body>
-        <div class="bg-dark.bg-gradient">
-            <nav class="navbar navbar-default">
-                <div class="container-fluid">
-                  <div class="navbar-header">
-                    <a class="navbar-brand" href="index.html">Home</a>
-                  </div>
-                  <div id="navbar" class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                      <li><a href="index.html">Zimmer</a></li>
-                      <li><a href="pages/hilfe.html">FAQ</a></li>
-                      <li><a href="pages/impressum.html">Impressum</a></li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                      <li><a href="pages/login.html">Login</a></li>
-                      <li><a href="pages/register.html">Register</a></li>
-                    </ul>
-                  </div><!--/.nav-collapse -->
-                </div><!--/.container-fluid -->
-              </nav>
-        </div>  
-        <div id="background">
-            <div id = "box">
+      <nav class="navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            </button>
+            <a class="navbar-brand" href="../index.html">Home</a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li><a href="pages/hilfe.html">FAQ</a></li>
+              <li><a href="pages/impressum.html">Impressum</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="pages/login.html">Login</a></li>
+              <li><a href="pages/register.html">Register</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>  
+      <div id="background">
+        <div id = "box">
             <div>
-                <img src="">
-                <h1 style="margin-left: 10em;">Willkommen im Hotel Benson!</h1>
+              <h1 style="margin-left: 10em;">Willkommen im Hotel Benson!</h1>
             </div>
             <hr>
-
             <div style="margin-left: 10em;">
-                  <p>
-                      Heutige News:
-                  </p>
-                  <p> Ein Zimmer ist frei geworden.</p>
-                  <p></p>
-                  <br>
-                  Verfügbare Zimmer:
-                  <br>
-                  Account anlegen
-                  <br>
-                  Einloggen
-                  <br>
-                  ...
-                  <br>
-                  <br>
-                  <br>
-                  <br>
-                  <br>
-                  <br>
-                  <br>
-                  <br>
-                  <br>
-                  <br>
-                  <br>
-                  <br>
-                  <br>
-                  <br>
-              </div>   
-            </div>
+              <p>
+                  Heutige News:
+              </p>
+              <p> Ein Zimmer ist frei geworden.</p>
+              <br>
+              <br>
+              Verfügbare Zimmer:
+              <br>
+              Account anlegen
+              <br>
+              Einloggen
+                 
+            </div>   
+          </div>
         </div>
         <hr>
-        <div w3-include-html="pages/footer.html"></div>
+        <div class="footer">
+          <div w3-include-html="pages/footer.html"></div>  
+        </div>
         <script>includeHTML();</script>
     </body>
 </html>
