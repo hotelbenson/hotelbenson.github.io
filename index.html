@@ -12,27 +12,30 @@
     </head>
 
     <body>
-      <nav class="navbar-default">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            </button>
-            <a class="navbar-brand" href="../index.html">Home</a>
+
+      
+      <div class="background">
+        <nav class="navbar-default">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              </button>
+              <a class="navbar-brand" href="../index.html">Home</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+              <ul class="nav navbar-nav">
+                <li><a href="pages/zimmer.html">Zimmer</a></li> 
+                <li><a href="pages/hilfe.html">FAQ</a></li>
+                <li><a href="pages/impressum.html">Impressum</a></li>
+              </ul>
+              <ul class="nav navbar-nav navbar-right">
+                <li><a href="pages/login.html">Login</a></li>
+                <li><a href="pages/register.html">Register</a></li>
+              </ul>
+            </div>
           </div>
-          <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-              <li><a href="pages/zimmer.html">Zimmer</a></li> 
-              <li><a href="pages/hilfe.html">FAQ</a></li>
-              <li><a href="pages/impressum.html">Impressum</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-              <li><a href="pages/login.html">Login</a></li>
-              <li><a href="pages/register.html">Register</a></li>
-            </ul>
-          </div>
-        </div>
-      </nav>  
-      <div id="background">
+        </nav>
+
         <div id = "box">
             <div>
               <h1 style="margin-left: 10em;">Willkommen im Hotel Benson!</h1>
@@ -78,9 +81,11 @@
               <br>
             </div>   
           </div>
+
+          <div class="footerspaceholder"></div>
+
         </div>
-        <hr>
-        <div style="height: 20vh"></div>
+
         <div class="footer">
           <div w3-include-html="pages/footer.html"></div>  
         </div>

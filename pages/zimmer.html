@@ -9,8 +9,13 @@
         <script src="../js/script.js"></script>
     </head>
     <body>
-        <div w3-include-html="navbar.html"></div>
-        <div id="background">
+
+        <div class="background">
+
+            <div class="navbar">
+                <div w3-include-html="navbar.html"></div>  
+            </div>
+
             <div id = "zimmer" style="margin-left: 30px;">
                 <h1>Zimmer</h1>
                 <p><strong>Zurzeit freie Zimmer:</strong></p>
@@ -36,12 +41,14 @@
                 <p>Durchschnittsbleibe für alle Normalos. Erwarten sie nicht zu viel idk was ich hierzu schreiben soll, ich brauch mehr Text, pls send
                     help.
                 </p>
+            </div>        
+            
+            <div class="footer">
+                <div w3-include-html="footer.html"></div>  
             </div>  
         </div>
         <hr>
-        <div class="footer">
-            <div w3-include-html="footer.html"></div>  
-        </div>
+
         <script>includeHTML();</script>
     </body>
 </html>

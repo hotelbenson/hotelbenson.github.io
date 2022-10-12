@@ -9,8 +9,12 @@
         <script src="../js/script.js"></script>
     </head>
     <body>
-        <div w3-include-html="navbar.html"></div>
-        <div id="background">
+        
+        <div class="background">
+            <div class="navbar">
+                <div w3-include-html="navbar.html"></div>  
+            </div>
+
             <div id = "questions" style="margin-left: 30px;">
                 <h1>Hilfe</h1>
                 <p><strong>Häufig gestellte Fragen:</strong></p>
@@ -31,12 +35,13 @@
                 <hr>
                 <p><strong>Q:</strong> <u>Wie komme ich zur Hilfe?</u></p>
                 <p><strong>A:</strong> In die Hilfe-Seite kommt man, indem man in der Navigation auf "Hilfe" wechselt, oder einfach <a href="hilfe.html">hier</a>.</p>
-            </div>  
+            </div> 
+            <div class="footer">
+                <div w3-include-html="footer.html"></div>  
+            </div> 
         </div>
         <hr>
-        <div class="footer">
-            <div w3-include-html="footer.html"></div>  
-        </div>
+        
         <script>includeHTML();</script>
     </body>
 </html>
