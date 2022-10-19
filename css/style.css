@@ -1,17 +1,18 @@
 body, html {
     height: 100%;
-    background-color:aliceblue;
+    background-color: rgb(228, 228, 228);
     width: 100%;
   }
 .navbar {
     position: fixed;
     width: 100%;
     top: 0;
+    background-color:  rgb(216, 94, 94);
 }
 
 
 .background {
-    background-color:aliceblue;
+    background-color: rgb(228, 228, 228);
     height: 100%;
     padding: 0;
     margin: 0;
