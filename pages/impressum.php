@@ -9,7 +9,7 @@
     </head>
     <body>
       <div class="background">
-        <div w3-include-html="navbar.html"></div> 
+        <?php include 'navbar.php';?>
         <div class="container">
         <div class="row justify-content-center">
           <div class="col-md-2 mb-5 mt-3">
@@ -47,7 +47,7 @@
       </div>
 
         <div class="footer">
-          <div w3-include-html="footer.html"></div>  
+          <?php include 'footer.php';?>
         </div>
         
       </div>

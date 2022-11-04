@@ -12,7 +12,7 @@
     <body>
 
         <div class="background">
-          <div w3-include-html="navbar.html"></div>  
+          <?php include 'navbar.php';?>  
             <div class="container-fluid">
                 <div id="carouselExampleCaptions" class="carousel slide carousel-dark" data-bs-ride="false">
                   <div class="carousel-indicators">
@@ -65,9 +65,8 @@
                 </div>
               </div>
             <div class="footer">
-                <div w3-include-html="footer.html"></div>  
+              <?php include 'footer.php';?>
             </div>  
         </div>
-        <script>includeHTML();</script>
     </body>
 </html>

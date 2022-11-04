@@ -12,35 +12,33 @@
     </head>
 
     <body>
-
-      
       <div class="background">
         <header>
           <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
               <ul class="navbar-nav flex-row flex-wrap bd-navbar-nav">
                 <li class="nav-item col-6 col-lg-auto">
-                  <a class="nav-link py-2 px-0 px-lg-2 active" aria-current="true" href="index.html">Home</a>
+                  <a class="nav-link py-2 px-0 px-lg-2 active" aria-current="true" href="index.php">Home</a>
                 </li>
                 <li class="nav-item col-6 col-lg-auto">
-                  <a class="nav-link py-2 px-0 px-lg-2" href="pages/zimmer.html">Zimmer</a>
+                  <a class="nav-link py-2 px-0 px-lg-2" href="pages/zimmer.php">Zimmer</a>
                 </li>
                 <li class="nav-item col-6 col-lg-auto">
-                  <a class="nav-link py-2 px-0 px-lg-2" href="pages/hilfe.html">Hilfe</a>
+                  <a class="nav-link py-2 px-0 px-lg-2" href="pages/hilfe.php">Hilfe</a>
                 </li>
                 <li class="nav-item col-6 col-lg-auto">
-                  <a class="nav-link py-2 px-0 px-lg-2" href="pages/impressum.html">Impressum</a>
+                  <a class="nav-link py-2 px-0 px-lg-2" href="pages/impressum.php">Impressum</a>
                 </li>
               </ul>
       
       
               <ul class="navbar-nav flex-row flex-wrap ms-md-auto">
                 <li class="nav-item col-6 col-lg-auto">
-                  <a class="nav-link py-2 px-0 px-lg-2" href="pages/register.html">Registrieren</a>
+                  <a class="nav-link py-2 px-0 px-lg-2" href="pages/register.php">Registrieren</a>
                 </li>
                 <li class="nav-item col-6 col-lg-auto">
                   <li class="nav-item col-6 col-lg-auto">
-                    <a class="nav-link py-2 px-0 px-lg-2" href="pages/login.html">Login</a>
+                    <a class="nav-link py-2 px-0 px-lg-2" href="pages/login.php">Login</a>
                   </li>
                 </li>
               </ul>
@@ -100,8 +98,7 @@
         </div>
 
         <div class="footer">
-          <div w3-include-html="pages/footer.html"></div>  
+        <?php include 'pages/footer.php';?> 
         </div>
-        <script>includeHTML();</script>
     </body>
 </html>

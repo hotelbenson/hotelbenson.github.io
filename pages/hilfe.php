@@ -12,7 +12,7 @@
     <body>
         
         <div class="background">
-          <div w3-include-html="navbar.html"></div>  
+          <?php include 'navbar.php';?> 
 
           <h1>FAQ - Frequently Asked Questions</h1>
 
@@ -69,11 +69,9 @@
             </div>
 
             <div class="footer">
-                <div w3-include-html="footer.html"></div>  
+              <?php include 'footer.php';?>
             </div> 
         </div>
         <hr>
-        
-        <script>includeHTML();</script>
     </body>
 </html>

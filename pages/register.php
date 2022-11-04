@@ -12,13 +12,8 @@
     </head>
 
     <body>
-        <div class="background">
-            
-
-                <div w3-include-html="navbar.html"></div>  
-
-            
-            
+        <div class="background"> 
+            <?php include 'navbar.php';?>  
             <div class="row justify-content-center" style="width: 100vw">
                 <div class="col-md-3">
                     <h1>Register</h1>
@@ -26,8 +21,21 @@
                     <br>
                 </div>
             </div>
-            
-            <form >
+            <?php
+                        //echo "<pre>"; print_r($_SERVER); "</pre>"
+                        //echo "<pre>"; print_r($_GET); "</pre>";
+                        //echo $_POST["city"];
+
+                        $errors = [];
+                        $errors["city"] = false;
+
+                        if($_SERVER["REQUEST_METHOD"] == "POST") {
+                            if(empty($_POST["city"])) {
+                                $errors["city"] = true;
+                            }
+                        }
+                    ?>
+            <form method="post">
                 <div class="row justify-content-center" style="width: 100vw">
                     <div class="col-md-4">
                         <div class="form-group">
@@ -62,17 +70,20 @@
                 </div>
                 <div class="row justify-content-center" style="width: 100vw">
                     <div class="col-md-2">
-                        <div class="form-group">
+                        <div class="form-group <?php echo ($errors["city"])?"":"was-validated"?>">
                             <label for="city">City</label>
-                            <input type="text" class="form-control" id="city" placeholder="Enter City">
+                            <input type="text" name="city" class="form-control" id="city" placeholder="Enter City">
+                            <?php echo ($errors["city"])?"<div class='invalid-feedback'>Please provide a valid zip.</div>":"" ?>
                         </div>
                     </div>
                     <div class="col-md-2">
                         <div class="form-group">
                             <label for="zip">Zip</label>
                             <input type="text" class="form-control" id="zip" placeholder="Enter zip">
+                            <div class="invalid-feedback">Please provide a valid zip.</div>
                         </div>
                     </div>
+                    
                 </div>
                 <div class="row justify-content-center" style="width: 100vw">
                     <div class="col-md-4">
@@ -117,16 +128,20 @@
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
                 </div>
+                <div class="row justify-content-center" style="width: 100vw">
+                    <div class="col-md-4">
+                    <?php
+                        echo ($errors["city"])?"<p style=color:red>Please input city!</p>":"<p style=color:green>Success</p>";
+                    ?>
+                    </div>
+                </div>
                 <br/>
                 <br/>
-
             </form>         
         </div>
 
         <div class="footer">
-            <div w3-include-html="footer.html"></div>  
+            <?php include 'footer.php';?> 
         </div>
-
-        <script>includeHTML();</script>
     </body>
 </html>

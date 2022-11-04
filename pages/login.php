@@ -14,11 +14,7 @@
     <body>
         
         <div class="background">
-            
-
-                <div w3-include-html="navbar.html"></div>  
-
-
+            <?php include 'navbar.php';?>
             <div class="row justify-content-center" style="width: 100vw">
                     <div class="col-md-3">
                         <h1>Login</h1>
@@ -66,10 +62,8 @@
                     </div> 
                 </form>
             <div class="footer">
-                <div w3-include-html="footer.html"></div>  
+                <?php include 'footer.php';?> 
             </div>
         </div>
-        
-    <script>includeHTML();</script>
     </body>
 </html>
