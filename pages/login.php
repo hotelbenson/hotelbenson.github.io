@@ -22,12 +22,14 @@
                         <br>
                     </div>
                 </div>
-                <form>
+                <form class="was-validated">
                     <div class="row justify-content-center" style="width: 100vw">
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Email address</label>
-                                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" required>
+                                <div class="valid-feedback">Valid.</div>
+                                <div class="invalid-feedback">Please fill out this field.</div>
                             </div>
                         </div>
                     </div>
@@ -35,18 +37,14 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Password</label>
-                                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
+                                <div class="valid-feedback">Valid.</div>
+                                <div class="invalid-feedback">Please fill out this field.</div>
                             </div>
                         </div>
                     </div>
                     <div class="row justify-content-center" style="width: 100vw">
-                        <div class="col-md-2">
-                            <div class="form-group form-check">
-                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                <label class="form-check-label" for="exampleCheck1">Remember me</label>
-                            </div>
-                        </div>
-                        <div class="col-md-1">
+                        <div class="col-md-3">
                             <a href="pech ghabt">Forgot password?</a>
                         </div>
                     </div>
