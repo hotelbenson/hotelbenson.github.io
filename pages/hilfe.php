@@ -6,16 +6,18 @@
         <meta charset="utf-8">
         <link rel="stylesheet" href="../bootstrap/bootstrap.min.css">
         <script src="../js/font_awesome.js"></script>
-        <script src="../js/script.js"></script>
         <script src="../js/bootstrap.js"></script>
     </head>
     <body>
         
         <div class="background">
           <?php include 'navbar.php';?> 
-
+          <div class="row justify-content-center">
+          <div class="col-md-6 mb-5 mt-3">
           <h1>FAQ - Frequently Asked Questions</h1>
-
+            <hr>
+          </div>
+        </div>
             <div class="accordion" id="accordionExample">
                 <div class="accordion-item">
                   <h2 class="accordion-header" id="headingOne">
@@ -63,6 +65,30 @@
                     <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
                       <div class="accordion-body">
                          In die Hilfe-Seite kommt man, indem man in der Navigation auf "Hilfe" wechselt, oder einfach <a href="hilfe.html">hier</a>.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingFive">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                           Wie mache ich wenn ich meine Anmeldedaten vergessen habe?
+                      </button>
+                    </h2>
+                    <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                         Einen neuen Zugang anlegen und beim nächsten Mal die eingegebenen Werte merken ;)
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingSix">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                           Was machen wenn das gewünschte Zimmer nicht frei ist?
+                      </button>
+                    </h2>
+                    <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                         Warten bis es frei wird duh
                       </div>
                     </div>
                   </div>

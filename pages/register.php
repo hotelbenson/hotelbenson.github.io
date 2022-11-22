@@ -8,7 +8,6 @@
         <meta charset="utf-8">
         <link rel="stylesheet" href="../bootstrap/bootstrap.min.css">
         <script src="../js/font_awesome.js"></script>
-        <script src="../js/script.js"></script>
     </head>
 
     <body>

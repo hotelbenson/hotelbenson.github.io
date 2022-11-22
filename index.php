@@ -5,13 +5,20 @@
         <meta name="description" content="Hotel Benson">
         <meta name="keywords" content="5-Star Hotel Benson">
         <meta charset="utf-8">
-        <link rel="stylesheet" href="bootstrap/bootstrap.min.css">
-        <script src="js/font_awesome.js"></script>
-        <script src="js/script.js"></script>
         <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="bootstrap/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="js/font_awesome.js"></script>
+        <script src="js/bootstrap.js"></script>
     </head>
 
     <body>
+    <?php session_start(); ?>
+    <script>
+        function activateToast() {
+          $('.toast').toast('show');
+        }
+      </script>
       <div class="background">
         <header>
           <nav class="navbar navbar-expand-lg">
@@ -38,7 +45,13 @@
                 </li>
                 <li class="nav-item col-6 col-lg-auto">
                   <li class="nav-item col-6 col-lg-auto">
-                    <a class="nav-link py-2 px-0 px-lg-2" href="pages/login.php">Login</a>
+                  <?php
+                    if(!isset($_SESSION["user"])) {
+                      echo "<a class='nav-link py-2 px-0 px-lg-2' href='pages/login.php'>Login</a>";
+                    } else {
+                      echo "<a class='nav-link py-2 px-0 px-lg-2' href='pages/logout.php'>Logout</a>";
+                    }
+                    ?>
                   </li>
                 </li>
               </ul>
@@ -48,7 +61,7 @@
 
         <div id = "box">
             <div>
-              <h1 style="margin-left: 10em; margin-top: 2em">Willkommen im Hotel Benson!</h1>
+              <h1 style="margin-left: 10em; margin-top: 1em">Willkommen im Hotel Benson!</h1>
             </div>
             <hr>
             <div style="margin-left: 10em; margin-right: 10em;">
@@ -94,9 +107,27 @@
 
           <br/>
           <br/>
-
+          <!-- Toast -->
+          <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+            <div id="liveToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
+              <div class="toast-header">
+                <strong class="me-auto">Hotel Benson</strong>
+                <small>1 sec ago</small>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+              </div>
+              <div class="toast-body">
+                Welcome back <?php echo isset($_SESSION['user'])?$_SESSION['user']:"General Kenobi"  ?>! Enjoy your stay :)
+              </div>
+          </div>
+          </div>
         </div>
-
+        <?php 
+        if(!isset($_SESSION["user"])) {
+          echo "<script>window.onload = function() {activateToast();}</script>";
+        } else {
+          echo "<script>window.onload = function() {activateToast();}</script>";
+        }
+      ?>
         <div class="footer">
         <?php include 'pages/footer.php';?> 
         </div>
