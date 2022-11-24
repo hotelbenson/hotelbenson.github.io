@@ -36,3 +36,14 @@ body, html {
     background-color: #850404; -> könnt man einbauen für so nen hover effect, macht aba responsiveness hin :/
     color: white;
 }*/
+.navbar-toggler {
+    background-color: white;
+  }
+.nav-item:hover {
+    background-color: #850404;
+    color: white!important;
+    border-radius: 2px;
+}
+.nav-link:hover {
+    color: white;
+}

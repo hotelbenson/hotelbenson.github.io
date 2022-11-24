@@ -23,6 +23,12 @@
         <header>
           <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
+              <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Burgermenu">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+            <div class="collapse na vbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav flex-row flex-wrap bd-navbar-nav">
                 <li class="nav-item col-6 col-lg-auto">
                   <a class="nav-link py-2 px-0 px-lg-2 active" aria-current="true" href="index.php">Home</a>
@@ -55,6 +61,7 @@
                   </li>
                 </li>
               </ul>
+              </div>
             </div>
           </nav>
         </header>
