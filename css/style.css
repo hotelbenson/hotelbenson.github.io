@@ -47,3 +47,10 @@ body, html {
 .nav-link:hover {
     color: white;
 }
+.accordion-body {
+    background-color: lightcoral;
+}
+
+.accordion-item {
+    width: 80%!important;
+}
