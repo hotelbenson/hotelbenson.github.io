@@ -112,6 +112,5 @@
               <?php include 'footer.php';?>
             </div> 
         </div>
-        <hr>
     </body>
 </html>
