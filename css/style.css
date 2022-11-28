@@ -1,12 +1,13 @@
 body, html {
     height: 100%;
     background-color: rgb(228, 228, 228);
-    width: 100%;
+    /*width: 100%; */
   }
 .navbar {
-    width: 100%;
+    /*width: 100%; */
     top: 0;
     background-color:  rgb(216, 94, 94);
+    box-shadow: 0 12px 6px -6px #999;
 }
 
 .background {
@@ -26,9 +27,6 @@ body, html {
     height: 30vh;    
 }
 
-.navbar {
-    box-shadow: 0 12px 6px -6px #999;
-}
 /*.navbar .navbar-nav .nav-link:hover {
     background-color: #850404; -> könnt man einbauen für so nen hover effect, macht aba responsiveness hin :/
     color: white;

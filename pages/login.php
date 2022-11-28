@@ -2,11 +2,11 @@
 <html>
     <head>
         <title>Hotel Benson</title>
-        <link rel="stylesheet" href="../css/style.css">
         <meta name="description" content="Hotel Benson">
         <meta name="keywords" content="5-Star Hotel Benson">
         <meta charset="utf-8">
         <link rel="stylesheet" href="../bootstrap/bootstrap.min.css">
+        <link rel="stylesheet" href="../css/style.css">
         <script src="../js/font_awesome.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src="../js/bootstrap.js"></script>

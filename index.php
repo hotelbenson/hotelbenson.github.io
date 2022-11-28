@@ -5,8 +5,8 @@
         <meta name="description" content="Hotel Benson">
         <meta name="keywords" content="5-Star Hotel Benson">
         <meta charset="utf-8">
-        <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="bootstrap/bootstrap.min.css">
+        <link rel="stylesheet" href="css/style.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src="js/font_awesome.js"></script>
         <script src="js/bootstrap.js"></script>
@@ -35,7 +35,7 @@
             <a class="nav-link py-3 px-0 px-lg-2 active" aria-current="true" href="index.php">Home</a>
           </li>
           <li class="nav-item col-6 col-lg-auto">
-            <a class="nav-link py-3 px-0 px-lg-2" href="page/szimmer.php">Zimmer</a>
+            <a class="nav-link py-3 px-0 px-lg-2" href="pages/zimmer.php">Zimmer</a>
           </li>
           <li class="nav-item col-6 col-lg-auto">
             <a class="nav-link py-3 px-0 px-lg-2" href="pages/hilfe.php">Hilfe</a>
@@ -43,6 +43,13 @@
           <li class="nav-item col-6 col-lg-auto">
             <a class="nav-link py-3 px-0 px-lg-2" href="pages/impressum.php">Impressum</a>
           </li>
+          <?php
+              if(isset($_SESSION["user"])) {
+                echo '<li class="nav-item col-6 col-lg-auto">
+                <a class="nav-link py-3 px-0 px-lg-2" href="pages/newsupload.php">Fileupload</a>
+              </li>';
+              }
+          ?>
         </ul>
 
         <ul class="navbar-nav flex-row flex-wrap ms-md-auto">
@@ -110,20 +117,7 @@
                 Der Fantasie sind hier keine Grenzen gesetzt! Wer dennoch mal auf die „Klassiker“ zurückgreifen möchte, 
                 findet in den meisten Aktivhotels ausreichend Gelegenheit dazu.</p>
               <br>
-              <p>
-                File Upload: 
-                <form enctype="multipart/form-data" method="post"
-                action="pages/upload.php">
-                <input type="file" name="picture">
-                <input type="submit" value="Hochladen">
-                </form>
-              </p>
-              <p>
-                <?php
-                  $bilder = scandir("fileupload");
-                  //echo "<img src='fileupload/img01.jpg'>"
-                ?>
-              </p>
+              
             </div>   
           </div>
 
@@ -144,9 +138,7 @@
           </div>
         </div>
         <?php 
-        if(!isset($_SESSION["user"])) {
-          echo "<script>window.onload = function() {activateToast();}</script>";
-        } else {
+        if(isset($_SESSION["user"])) {
           echo "<script>window.onload = function() {activateToast();}</script>";
         }
       ?>

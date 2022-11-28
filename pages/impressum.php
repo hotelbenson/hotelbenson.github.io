@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Impressum</title>
-        <link rel="stylesheet" href="../css/style.css">
+        <title>Impressum</title>        
         <link rel="stylesheet" href="../bootstrap/bootstrap.min.css">
+        <link rel="stylesheet" href="../css/style.css">
         <script src="../js/font_awesome.js"></script>
     </head>
     <body>
