@@ -25,8 +25,8 @@
                 <div class="accordion-item">
                   <h2 class="accordion-header" id="headingOne">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                    <i class="fa fa-question-circle" aria-hidden="true"></i>
-                      | Wo kann ich ein Zimmer reservieren?
+                    <i class="fa fa-question-circle" aria-hidden="true"> </i>
+                    &nbsp;Wo kann ich ein Zimmer reservieren?
                     </button>
                   </h2>
                   <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
@@ -41,7 +41,7 @@
                   <h2 class="accordion-header" id="headingTwo">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                     <i class="fa fa-question-circle" aria-hidden="true"></i>
-                      | Wo kann ich sehen wie viele Zimmer noch frei sind?
+                    &nbsp;Wo kann ich sehen wie viele Zimmer noch frei sind?
                     </button>
                   </h2>
                   <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
@@ -55,7 +55,7 @@
                   <h2 class="accordion-header" id="headingThree">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                     <i class="fa fa-question-circle" aria-hidden="true"></i>     
-                      | Wie komme ich zum Impressum?
+                    &nbsp;Wie komme ich zum Impressum?
                     </button>
                   </h2>
                   <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
@@ -69,7 +69,7 @@
                     <h2 class="accordion-header" id="headingFour">
                       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
                       <i class="fa fa-question-circle" aria-hidden="true"></i>     
-                        | Wie komme ich zur Hilfe?
+                      &nbsp;Wie komme ich zur Hilfe?
                       </button>
                     </h2>
                     <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
@@ -83,7 +83,7 @@
                     <h2 class="accordion-header" id="headingFive">
                       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
                       <i class="fa fa-question-circle" aria-hidden="true"></i>   
-                        | Wie mache ich wenn ich meine Anmeldedaten vergessen habe?
+                      &nbsp;Wie mache ich wenn ich meine Anmeldedaten vergessen habe?
                       </button>
                     </h2>
                     <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
@@ -97,7 +97,7 @@
                     <h2 class="accordion-header" id="headingSix">
                       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
                       <i class="fa fa-question-circle" aria-hidden="true"></i>   
-                        | Was machen wenn das gewünschte Zimmer nicht frei ist?
+                      &nbsp;Was machen wenn das gewünschte Zimmer nicht frei ist?
                       </button>
                     </h2>
                     <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionExample">

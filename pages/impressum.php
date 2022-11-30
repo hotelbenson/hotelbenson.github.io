@@ -5,6 +5,7 @@
         <link rel="stylesheet" href="../bootstrap/bootstrap.min.css">
         <link rel="stylesheet" href="../css/style.css">
         <script src="../js/font_awesome.js"></script>
+        <script src="../js/bootstrap.js"></script>
     </head>
     <body>
       <div class="background">
