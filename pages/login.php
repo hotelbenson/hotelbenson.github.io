@@ -23,12 +23,24 @@
         error_reporting(E_ERROR | E_PARSE);
         if($_SERVER["REQUEST_METHOD"] == "POST") {
             if(isset($_POST["email"]) && isset($_POST["password"])) {
-                if($_POST["email"] == "admin@admin" && $_POST["password"] == "admin") {
+
+                //checken obs den User in der db gibt:
+                require_once('dbaccess.php');
+                 $db_obj = new mysqli($host, $user, $dbpassword, $database); 
+                 if($db_obj->connect_error) {
+                    echo "Connection Error: " . $db_obj->connect_error;
+                    exit();
+                }
+                $sql = "Select * From users where email like '" . $_POST["email"]."'";
+                $result = $db_obj->query($sql);
+                if(password_verify($_POST["password"], $result->fetch_assoc()['password'])) {
                     $_SESSION["user"] = "admin"; //hier sonst einfach checken obs den User in der db gibt
+                    $db_obj->close();
                     header('Location: ../index.php');
                 } else {
                     echo "<script>window.onload = function() {activateToast();}</script>";
                 }
+            $db_obj->close();
             } 
         }
         ?>

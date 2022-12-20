@@ -36,47 +36,81 @@
                         $errors["password2"] = false;
                         $name = ""; $email = ""; $tel = ""; $adress = ""; $city = ""; $zip = ""; $password = ""; $password2 = "";
 
+                        $errorcount = 0;
+
                         if($_SERVER["REQUEST_METHOD"] == "POST") {
                             if(empty($_POST["city"])) {
                                 $errors["city"] = true;
+                                $errorcount = $errorcount + 1;
                             } else {
                                 $city = $_POST["city"];
                             }
                             if(empty($_POST["name"])) {
                                 $errors["name"] = true;
+                                $errorcount = $errorcount + 1;
                             } else {
                                 $name = $_POST["name"];
                             }
                             if(empty($_POST["email"])) {
                                 $errors["email"] = true;
+                                $errorcount = $errorcount + 1;
                             } else {
                                 $email = $_POST["email"];
                             }
                             if(empty($_POST["adress"])) {
                                 $errors["adress"] = true;
+                                $errorcount = $errorcount + 1;
                             } else {
                                 $adress = $_POST["adress"];
                             }
                             if(empty($_POST["zip"])) {
                                 $errors["zip"] = true;
+                                $errorcount = $errorcount + 1;
                             } else {
                                 $zip = $_POST["zip"];
                             }
                             if(empty($_POST["tel"])) {
                                 $errors["tel"] = true;
+                                $errorcount = $errorcount + 1;
                             } else {
                                 $tel = $_POST["tel"];
                             }
                             if(empty($_POST["password"])) {
                                 $errors["password"] = true;
+                                $errorcount = $errorcount + 1;
                             } else {
                                 $password = $_POST["password"];
                             }
                             if(empty($_POST["password2"])) {
                                 $errors["password2"] = true;
+                                $errorcount = $errorcount + 1;
                             } else {
                                 $password2 = $_POST["password2"];
                             }
+                        }
+
+                        if($_SERVER["REQUEST_METHOD"] == "POST" && $errorcount < 1) {
+                            require_once('dbaccess.php');
+                            $db_obj = new mysqli($host, $user, $dbpassword, $database); 
+
+                            if($db_obj->connect_error) {
+                                echo "Connection Error: " . $db_obj->connect_error;
+                                exit();
+                            }
+
+                            $sql = "Select * From users";
+                            $result = $db_obj->query($sql);
+                            while($row = $result->fetch_assoc()) {
+                                echo "id: ".$row['id'] . "<br>";
+                                echo "name: ".$row['name'] . "<br>";
+                                echo "password: ".$row['password'] . "<br>";
+                                echo "email: ".$row['email'] . "<br>";
+                            }
+                            //Password hashen
+                            $hashpw = password_hash($password, PASSWORD_DEFAULT);
+                            $sql = "INSERT INTO users (name, password, email) VALUES ('".$name."','".$hashpw."','".$email."');";
+                            $result = $db_obj->query($sql);
+                            $db_obj->close();
                         }
                     ?>
             <form method="post" class="<?php echo (empty($_POST) == 1)?"":"was-validated" ?>">
