@@ -47,7 +47,10 @@
               if(isset($_SESSION["user"]) && $_SESSION["user"] == "admin") {
                 echo '<li class="nav-item col-6 col-lg-auto">
                 <a class="nav-link py-3 px-0 px-lg-2" href="pages/newsupload.php">Fileupload</a>
-              </li>';
+                </li>';
+                echo '<li class="nav-item col-6 col-lg-auto">
+                <a class="nav-link py-3 px-0 px-lg-2" href="pages/users.php">Userverwaltung</a>
+                </li>';
               }
           ?>
         </ul>

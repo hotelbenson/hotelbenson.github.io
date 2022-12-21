@@ -22,14 +22,14 @@
                   </div>
                   <div class="carousel-inner">
                     <div class="carousel-item active">
-                      <img src="../uploads/hotel5.jpg" class="d-block w-100" alt="Alpenluftzimmer">
+                      <img src="../uploads/hotel5.jpg" class="d-block w-100" alt="Alpenluftzimmer" width="300px">
                       <div class="carousel-caption d-none d-md-block mb-5" style="background-color: lightcyan; border-radius: 7px;">
                         <h5>Alpenluftzimmer</h5>
                         <p>Hier können sie so richtig entspannen. Für den niedrigen Preis von 50€ pro Nacht.</p>
                       </div>
                     </div>
                     <div class="carousel-item">
-                      <img src="../uploads/zimmer6.jpg" class="d-block w-100" alt="Präsidentensuite">
+                      <img src="../uploads/zimmer6.jpg" class="d-block w-100" alt="Präsidentensuite" width="300px">
                       <div class="carousel-caption d-none d-md-block mb-5" style="background-color: lightcyan; border-radius: 7px;">
                         <h5>Präsidentensuite</h5>
                         <p>Nur für die reichen Gäste. Hier kann man so richtig flexxen wie viel Geld man hat. Sagen sie ja zu überteuerten Preisen
@@ -37,7 +37,7 @@
                       </div>
                     </div>
                     <div class="carousel-item">
-                      <img src="../uploads/zimmer7.jpg" class="d-block w-100" alt="Schluckerzimmer">
+                      <img src="../uploads/zimmer7.jpg" class="d-block w-100" alt="Schluckerzimmer" width="300px">
                       <div class="carousel-caption d-none d-md-block mb-5" style="background-color: lightcyan; border-radius: 7px;">
                         <h5>Schluckerzimmer</h5>
                         <p>Hier kann man pennen wenn man einfach broke ist. Wir kennen den Struggle. 10€ die Nacht auf unsern Nacken.
@@ -45,7 +45,7 @@
                       </div>
                     </div>
                     <div class="carousel-item">
-                      <img src="../uploads/hotel5.jpg" class="d-block w-100" alt="Commoner Suite">
+                      <img src="../uploads/hotel5.jpg" class="d-block w-100" alt="Commoner Suite" width="300px">
                       <div class="carousel-caption d-none d-md-block mb-5" style="background-color: lightcyan; border-radius: 7px;">
                         <h5>Commoner Suite</h5>
                         <p>Durchschnittsbleibe für alle Normalos. Erwarten sie nicht zu viel idk was ich hierzu schreiben soll, ich brauch mehr Text, pls send
