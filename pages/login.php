@@ -33,8 +33,10 @@
                 }
                 $sql = "Select * From users where email like '" . $_POST["email"]."'";
                 $result = $db_obj->query($sql);
-                if(password_verify($_POST["password"], $result->fetch_assoc()['password'])) {
-                    $_SESSION["user"] = "admin"; //hier sonst einfach checken obs den User in der db gibt
+                $row = $result->fetch_assoc();
+                    
+                if(password_verify($_POST["password"], $row['password'])) {
+                    $_SESSION["user"] = $row['role']==2?"admin":"user"; 
                     $db_obj->close();
                     header('Location: ../index.php');
                 } else {

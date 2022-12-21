@@ -28,7 +28,7 @@
             <a class="nav-link py-3 px-0 px-lg-2" href="impressum.php">Impressum</a>
           </li>
           <?php
-              if(isset($_SESSION["user"])) {
+              if(isset($_SESSION["user"]) && $_SESSION["user"] == "admin") {
                 echo '<li class="nav-item col-6 col-lg-auto">
                 <a class="nav-link py-3 px-0 px-lg-2" href="newsupload.php">Fileupload</a>
               </li>';

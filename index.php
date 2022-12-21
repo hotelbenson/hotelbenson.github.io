@@ -44,7 +44,7 @@
             <a class="nav-link py-3 px-0 px-lg-2" href="pages/impressum.php">Impressum</a>
           </li>
           <?php
-              if(isset($_SESSION["user"])) {
+              if(isset($_SESSION["user"]) && $_SESSION["user"] == "admin") {
                 echo '<li class="nav-item col-6 col-lg-auto">
                 <a class="nav-link py-3 px-0 px-lg-2" href="pages/newsupload.php">Fileupload</a>
               </li>';
@@ -81,7 +81,29 @@
             <hr>
             <div style="margin-left: 10em; margin-right: 10em;">
               <h2>News:</h2>
-              <br>        
+              <br>      
+              
+              <?php
+                require_once('pages/dbaccess.php');
+                $db_obj = new mysqli($host, $user, $dbpassword, $database); 
+
+                if($db_obj->connect_error) {
+                    echo "Connection Error: " . $db_obj->connect_error;
+                    exit();
+                }
+
+                $sql = "Select * From newsposts";
+                $result = $db_obj->query($sql);
+                while($row = $result->fetch_assoc()) {
+                    echo "<p><strong>" . $row['header'] . "</strong></p>";
+                    echo "<p>" . $row['text'] . "</p>";
+                    echo "<img src='" . $row['picturepath'] . "' width=200px>";
+                    echo "<hr>";
+                }
+              $db_obj->close();
+              ?>
+
+
               <p> <strong>Ausfallsbonus III (Corona):</strong></p>
               <p>Der Ausfallsbonus III kann bei mindestens 30 % Umsatzausfall im November und Dezember 2021 und 
                 40 % Umsatzausfall im 1. Quartal 2022 beantragt werden und beträgt max. 80.000 Euro/Monat. 

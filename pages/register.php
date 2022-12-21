@@ -110,6 +110,8 @@
                             $hashpw = password_hash($password, PASSWORD_DEFAULT);
                             $sql = "INSERT INTO users (name, password, email) VALUES ('".$name."','".$hashpw."','".$email."');";
                             $result = $db_obj->query($sql);
+                            $_SESSION["user"] = "user"; 
+                            header('Location: ../index.php');
                             $db_obj->close();
                         }
                     ?>

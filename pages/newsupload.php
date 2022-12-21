@@ -12,8 +12,6 @@
         
         <div class="background">
           <?php include 'navbar.php';?> 
-          <!-- when individual styleshee is loaded after bootstrap, h1 disappears behind navbar -->
-          <!-- TODO: fix this, but individual css is stil loaded afterwards -->
           <div class="row justify-content-center">
           <div class="col-md-2 mb-5 mt-3">
           <h1>Fileupload</h1>
@@ -35,6 +33,14 @@
                 </div>
                
                 
+                <div class="row justify-content-center" style="width: 100vw">
+                    <div class="col-md-4 mt-2">
+                        <div class="form-group">
+                            <label for="header">Überschrift</label>
+                            <input type="text" name="header" form="upload" placeholder="Überschrift"></textarea>
+                        </div>
+                    </div>
+                </div>
                 <div class="row justify-content-center" style="width: 100vw">
                     <div class="col-md-4 mt-2">
                         <div class="form-group">
