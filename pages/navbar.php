@@ -41,7 +41,13 @@
 
         <ul class="navbar-nav flex-row flex-wrap ms-md-auto">
           <li class="nav-item col-6 col-lg-auto">
-            <a class="nav-link py-3 px-0 px-lg-2" href="register.php">Registrieren</a>
+            <?php
+            if(isset($_SESSION["user"])) {
+              echo '<a class="nav-link py-3 px-0 px-lg-2" href="profil.php">Profil</a>';
+            } else {
+              echo '<a class="nav-link py-3 px-0 px-lg-2" href="register.php">Registrieren</a>';
+            }
+            ?>
           </li>
           <li class="nav-item col-6 col-lg-auto">
             <li class="nav-item col-6 col-lg-auto">

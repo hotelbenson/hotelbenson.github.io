@@ -36,7 +36,10 @@
                 $row = $result->fetch_assoc();
                     
                 if(password_verify($_POST["password"], $row['password'])) {
-                    $_SESSION["user"] = $row['role']==2?"admin":"user"; 
+                    $_SESSION["user"] = $row['role']==2?"admin":"user";
+                    $_SESSION["usermail"] = $row['email'];
+                    $_SESSION['userpw'] = $row['password'];
+                    $_SESSION['userid'] = $row['id'];
                     $db_obj->close();
                     header('Location: ../index.php');
                 } else {
@@ -90,20 +93,20 @@
                             </div>
                         </div> 
                     </form>;
-                    <!-- Toast -->
-          <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
-            <div id="liveToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
-              <div class="toast-header">
-                <strong class="me-auto">Hotel Benson</strong>
-                <small>1 sec ago</small>
-                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-              </div>
-              <div class="toast-body">
-                <i class="fa fa-exclamation-triangle"></i>
-                Sorry, these login credentials did not match an account :/ Please try again.
-              </div>
-          </div>
-          </div>
+            <!-- Toast -->
+            <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+                <div id="liveToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header">
+                    <strong class="me-auto">Hotel Benson</strong>
+                    <small>1 sec ago</small>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body">
+                    <i class="fa fa-exclamation-triangle"></i>
+                    Sorry, these login credentials did not match an account :/ Please try again.
+                </div>
+                </div>
+            </div>
             <div class="footer">
                 <?php include 'footer.php';?> 
             </div>

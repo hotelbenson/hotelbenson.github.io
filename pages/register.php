@@ -22,9 +22,6 @@
                 </div>
             </div>
             <?php
-                        //echo "<pre>"; print_r($_SERVER); "</pre>"
-                        //echo "<pre>"; print_r($_GET); "</pre>";
-
                         $errors = [];
                         $errors["city"] = false;
                         $errors["name"] = false;
@@ -110,9 +107,16 @@
                             $hashpw = password_hash($password, PASSWORD_DEFAULT);
                             $sql = "INSERT INTO users (name, password, email) VALUES ('".$name."','".$hashpw."','".$email."');";
                             $result = $db_obj->query($sql);
-                            $_SESSION["user"] = "user"; 
-                            header('Location: ../index.php');
+                            $_SESSION["user"] = "user";
+                            $_SESSION['usermail'] = $email;
+                            $_SESSION['userpw'] = $hashpw;
+                            
+                            //Get Userid
+                            $sql = "Select * From users where email = '" . $email . "' and password = '".$hashpw."';";
+                            $result = $db_obj->query($sql);
+                            $_SESSION['userid'] = $result->fetch_assoc()['id'];
                             $db_obj->close();
+                            header('Location: ../index.php');
                         }
                     ?>
             <form method="post" class="<?php echo (empty($_POST) == 1)?"":"was-validated" ?>">
