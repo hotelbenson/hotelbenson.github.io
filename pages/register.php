@@ -95,17 +95,9 @@
                                 exit();
                             }
 
-                            $sql = "Select * From users";
-                            $result = $db_obj->query($sql);
-                            while($row = $result->fetch_assoc()) {
-                                echo "id: ".$row['id'] . "<br>";
-                                echo "name: ".$row['name'] . "<br>";
-                                echo "password: ".$row['password'] . "<br>";
-                                echo "email: ".$row['email'] . "<br>";
-                            }
                             //Password hashen
                             $hashpw = password_hash($password, PASSWORD_DEFAULT);
-                            $sql = "INSERT INTO users (name, password, email) VALUES ('".$name."','".$hashpw."','".$email."');";
+                            $sql = "INSERT INTO users (name, password, email, phone, adress, city, zip) VALUES ('".$name."','".$hashpw."','".$email."','".$tel."','".$adress."','".$city."','".$zip."');";
                             $result = $db_obj->query($sql);
                             $_SESSION["user"] = "user";
                             $_SESSION['usermail'] = $email;

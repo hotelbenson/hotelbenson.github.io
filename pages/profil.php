@@ -9,7 +9,7 @@
 
     //update profile on form submit
     if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['name']) && isset($_SESSION['userid'])) {
-        $db_obj = new mysqli($host, $user, $dbpassword, $database); 
+        $db_obj = new mysqli($host, $user, $dbpassword, $database);
 
         //Check ob ein neues Passwort eingegeben wurde:
         if(isset($_POST['password'])) {
@@ -26,12 +26,13 @@
                 $message = "Error: New passwords do not match!";
                 echo "<script>window.onload = function() {activateToast();}</script>";
             }
+            $stat = $_POST['status'] == "on" ? "1" : "0";
             $hashpw = password_hash($_POST['password'], PASSWORD_DEFAULT);
-            $sql = "Update users SET name = '" . $_POST['name'] . "', password = '" . $hashpw . "', email = '" . $_POST['email'] . "', phone = '" . $_POST['phone'] . "', adress = '" . $_POST['adress'] . "', city = '" . $_POST['city'] . "', zip = '" . $_POST['zip'] . "' WHERE id = ". $_SESSION['userid'] . ";";
+            $sql = "Update users SET name = '" . $_POST['name'] . "', password = '" . $hashpw . "', email = '" . $_POST['email'] . "', phone = '" . $_POST['phone'] . "', adress = '" . $_POST['adress'] . "', city = '" . $_POST['city'] . "', zip = '" . $_POST['zip'] . "', status = '".$stat. "' WHERE id = ". $_SESSION['usertoupdate'] . ";";
             $result = $db_obj->query($sql);
             $_SESSION['usermail'] = $_POST['email'];
         } else {
-            $sql = "Update users SET name = '" . $_POST['name'] . "', email = '" . $_POST['email'] . "', phone = '" . $_POST['phone'] . "', adress = '" . $_POST['adress'] . "', city = '" . $_POST['city'] . "', zip = '" . $_POST['zip'] . "' WHERE id = ". $_SESSION['userid'] . ";";
+            $sql = "Update users SET name = '" . $_POST['name'] . "', email = '" . $_POST['email'] . "', phone = '" . $_POST['phone'] . "', adress = '" . $_POST['adress'] . "', city = '" . $_POST['city'] . "', zip = '" . $_POST['zip'] . "', status = '".$stat. "' WHERE id = ". $_SESSION['usertoupdate'] . ";";
             $result = $db_obj->query($sql);
             $_SESSION['usermail'] = $_POST['email'];
         }
@@ -40,7 +41,7 @@
         $message = "Profil erfolgreich geupdated!";
         echo "<script>window.onload = function() {activateToast();}</script>";
 
-        // TODO: Admin-Userverwaltung -> einf userid in session ändern und dann in profil rein, dann irgendwie zrück zum Adminuser
+        // TODO: Admin-Userverwaltung -> password von nem User ändern ohne das alte passwort zu checken
         // TODO: Zimmerreservierungen möglich machen
         // TODO: Reservierungen für User einsehbar machen + Option zu canceln/bestätigen
         // TODO: Alle Reservierungen für Admins einsehbar machen
@@ -83,7 +84,16 @@
                 echo "Connection Error: " . $db_obj->connect_error;
                 exit();
             }
-            $sql = "Select * From users where id = " . $_SESSION['userid'] . ";";
+
+            //If Admin is viewing the page and GET parameter is set -> display page of user with that id. If not display the page of the current user.
+            if ($_SESSION["user"] == "admin" && isset($_GET['id'])) {
+                $id = $_GET['id'];
+            } else {
+                $id = $_SESSION['userid'];
+            }
+            $_SESSION['usertoupdate'] = $id;
+
+            $sql = "Select * From users where id = " . $id . ";";
             $result = $db_obj->query($sql);
             while($row = $result->fetch_assoc()) {
                 $name = $row['name'];
@@ -92,10 +102,12 @@
                 $adress = $row['adress'];
                 $city = $row['city'];
                 $zip = $row['zip'];
+                $status = $row['status'];
             }
             $db_obj->close();
             ?>
-            <form method="post" action="profil.php">
+
+            <form method="post" action="profil.php<?php echo isset($_GET['id'])?"?id=".$_GET['id']:"" ?>">
                 <div class="row justify-content-center" style="width: 100vw">
                     <div class="col-md-4">
                         <div class="form-group">
@@ -143,14 +155,33 @@
                     </div>
                 </div>
                 <br>
-                <div class="row justify-content-center" style="width: 100vw">
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label for="password">Passwort ändern:</label>
-                            <input type="password" name="oldpassword" class="form-control" id="oldpassword" placeholder="Altes Passwort">
+                <?php
+                    //Admin kann User aktiv/inaktiv setzen
+                    if($_SESSION["user"] == "admin") {
+                        $checked = $status==1?"checked":"";
+                        echo '<div class="row justify-content-center" style="width: 100vw">
+                        <div class="col-md-4">
+                            <div class="form-check">
+                                <label class="form-check-label" for="status">aktiv (Uncheck this box and save to deactivate the user)</label>
+                                <input type="checkbox" class="form-check-input" name="status" class="form-control" id="status" '. $checked .'>
+                            </div>
                         </div>
                     </div>
-                </div>
+                    <br>';
+                    }
+                    //wenn der Admin einen anderen User bearbeitet, muss er das alte Password nicht eingeben um es zu ändern
+                    if(!isset($_GET['id'])) {
+                        echo '<div class="row justify-content-center" style="width: 100vw">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="password">Passwort ändern:</label>
+                                <input type="password" name="oldpassword" class="form-control" id="oldpassword" placeholder="Altes Passwort">
+                            </div>
+                        </div>
+                    </div>';
+                    }
+                ?>
+                
                 <div class="row justify-content-center" style="width: 100vw">
                     <div class="col-md-4">
                         <div class="form-group">
@@ -169,7 +200,7 @@
                 </div>
                 <div class="row justify-content-center" style="width: 100vw">
                     <div class="col-md-4 mt-3">
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary">Speichern</button>
                     </div>
                 </div>
             </form> 
@@ -189,6 +220,8 @@
                 </div>
                 </div>
             </div>
+            <!-- Toast -->
+
             <div class="footer">
               <?php include 'footer.php';?>
             </div> 

@@ -7,7 +7,6 @@
     }
 ?>
 
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -28,11 +27,29 @@
                 <hr>
             </div>
           </div>
+          <!-- Hier alle User anzeigen, mit Status und ob sie Admin sind. -->
           <div class="container-fluid">
-          <div class="row justify-content-center">
-            <div class="col-md-2 mb-5 mt-3" style="border-radius: 2px; border-color: black; border: 1px; border-style:double">
-            <!-- Hier alle User anzeigen, mit Status und ob sie Admin sind. -->
-            <?php
+            <div class="row justify-content-center">
+                <div class='col-md-2'>
+                    <strong>Id:       </strong>
+                 </div>
+                <div class='col-md-2'>
+                    <strong>Name:     </strong>
+                </div>
+                <div class='col-md-2'>
+                    <strong>Email:        </strong>
+                </div>
+                <div class='col-md-2'>
+                    <strong>Rolle:        </strong>
+                </div>
+                <div class='col-md-1'>
+                    <strong>Status:        </strong>
+                </div>
+                <div class='col-md-1'>
+                </div>
+                <hr>
+            </div>
+        <?php
             require_once('dbaccess.php');
             $db_obj = new mysqli($host, $user, $dbpassword, $database); 
 
@@ -43,20 +60,33 @@
             $sql = "Select * From users";
             $result = $db_obj->query($sql);
             while($row = $result->fetch_assoc()) {
-                echo "<strong>Id: </strong>: ".$row['id'] . "<br>";
-                echo "<strong>Name: </strong>".$row['name'] . "<br>";
-                echo "<strong>Email: </strong>".$row['email'] . "<br>";
-                echo "<strong>Rolle: </strong>";
+                echo "<div class='row justify-content-center'>";
+                echo "<div class='col-md-2'>";
+                echo $row['id'];
+                echo "</div>";
+                echo "<div class='col-md-2'>";
+                echo $row['name'];
+                echo "</div>";
+                echo "<div class='col-md-2'>";
+                echo $row['email'];
+                echo "</div>";
+                echo "<div class='col-md-2'>";
                 echo $row['role'] == 1 ? "User" : "Admin";
-                echo "<br>"; 
-                echo "<strong>Status: </strong>";
+                echo "</div>";
+                echo "<div class='col-md-1'>";
                 echo $row['status'] == 1 ? "aktiv" : "deaktiviert";
+                echo "</div>";
+                echo "<div class='col-md-1 mb-2'>";
+                echo "<input type='button' onclick='location.href=\"profil.php?id=".$row['id']."\"' value='Bearbeiten'>";
+                echo "<br>";
+                echo "</div>";
+                
                 echo "<hr>";
+                echo "</div>";
             }
             $db_obj->close();
-            ?>
-            </div>
-          </div>
+        ?>
+          
           </div>
             <div class="footer">
               <?php include 'footer.php';?>

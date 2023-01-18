@@ -36,7 +36,7 @@
                 <div class="row justify-content-center" style="width: 100vw">
                     <div class="col-md-4 mt-2">
                         <div class="form-group">
-                            <label for="header">Überschrift</label>
+                            <label for="header">Überschrift: </label>
                             <input type="text" name="header" form="upload" placeholder="Überschrift"></textarea>
                         </div>
                     </div>
@@ -44,7 +44,8 @@
                 <div class="row justify-content-center" style="width: 100vw">
                     <div class="col-md-4 mt-2">
                         <div class="form-group">
-                            <label for="news">Newstext</label>
+                            <label for="news">Newstext: </label>
+                            <br>
                             <textarea rows="4" cols="70" name="comment" form="upload">Enter text here...</textarea>
                         </div>
                     </div>

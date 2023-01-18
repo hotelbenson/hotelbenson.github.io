@@ -34,24 +34,32 @@
                 $sql = "Select * From users where email like '" . $_POST["email"]."'";
                 $result = $db_obj->query($sql);
                 $row = $result->fetch_assoc();
-                    
-                if(password_verify($_POST["password"], $row['password'])) {
-                    $_SESSION["user"] = $row['role']==2?"admin":"user";
-                    $_SESSION["usermail"] = $row['email'];
-                    $_SESSION['userpw'] = $row['password'];
-                    $_SESSION['userid'] = $row['id'];
-                    $db_obj->close();
-                    header('Location: ../index.php');
-                } else {
+                
+                if($row['status']==0) {
+                    //Wenn der User deaktiviert ist, lass ihn nicht einloggen.
+                    $message = "Your account is deactivated. If you need further information pleas contact an admin.";
                     echo "<script>window.onload = function() {activateToast();}</script>";
+                } else {
+                    //Ist der User aktiv, check ob das Passwort passt.
+                    if(password_verify($_POST["password"], $row['password'])) {
+                        $_SESSION["user"] = $row['role']==2?"admin":"user";
+                        $_SESSION["usermail"] = $row['email'];
+                        $_SESSION['userpw'] = $row['password'];
+                        $_SESSION['userid'] = $row['id'];
+                        $db_obj->close();
+                        header('Location: ../index.php');
+                    } else {
+                        //Passwort passt nicht.
+                        $message = "Sorry, these login credentials did not match an account :/ Please try again.";
+                        echo "<script>window.onload = function() {activateToast();}</script>";
+                    }
                 }
+
             $db_obj->close();
             } 
         }
         ?>
-        <!-- im action aufn php file hinweisen, da logik reinhauen und mit zb header(login.php) zu ner anderen Seite verweisen-->
-        <!-- logout -> session_destroy() und redirecten auf index.php; logout anzeigen je nachdem ob er eingloggt ist-->
-        <!--  if(!isset($_SESSION["user"])) { -->
+
         <div class="background">
             <?php include 'navbar.php';?>
             <div class="row justify-content-center" style="width: 100vw">
@@ -103,7 +111,7 @@
                 </div>
                 <div class="toast-body">
                     <i class="fa fa-exclamation-triangle"></i>
-                    Sorry, these login credentials did not match an account :/ Please try again.
+                    <?php echo $message; ?>
                 </div>
                 </div>
             </div>
