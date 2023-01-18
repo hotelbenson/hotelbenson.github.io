@@ -46,7 +46,7 @@
                     <strong>Status:        </strong>
                 </div>
                 <div class='col-md-1'>
-                </div>
+                </div> 
                 <hr>
             </div>
         <?php

@@ -170,7 +170,7 @@
                     <br>';
                     }
                     //wenn der Admin einen anderen User bearbeitet, muss er das alte Password nicht eingeben um es zu ändern
-                    if(!isset($_GET['id'])) {
+                    if(!isset($_GET['id'])||($_GET['id']==$_SESSION['userid'])) {
                         echo '<div class="row justify-content-center" style="width: 100vw">
                         <div class="col-md-4">
                             <div class="form-group">
