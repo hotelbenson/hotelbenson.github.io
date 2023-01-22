@@ -12,8 +12,7 @@
         
         <div class="background">
           <?php include 'navbar.php';?> 
-          <!-- when individual styleshee is loaded after bootstrap, h1 disappears behind navbar -->
-          <!-- TODO: fix this, but individual css is stil loaded afterwards -->
+
           <div class="row justify-content-center">
           <div class="col-md-6 mb-5 mt-7">
           <h1>FAQ - Frequently Asked Questions</h1>
@@ -21,7 +20,9 @@
           </div>
         </div>
         <div class="container-fluid">
+        <div class="row justify-content-center">
             <div class="accordion" id="accordionExample">
+              <div class="col-md-6 offset-md-3">
                 <div class="accordion-item">
                   <h2 class="accordion-header" id="headingOne">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
@@ -107,6 +108,8 @@
                     </div>
                   </div>
             </div>
+            </div>
+          </div>
         </div>
             <div class="footer">
               <?php include 'footer.php';?>

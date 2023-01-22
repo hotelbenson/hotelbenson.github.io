@@ -46,6 +46,7 @@
                         $_SESSION["usermail"] = $row['email'];
                         $_SESSION['userpw'] = $row['password'];
                         $_SESSION['userid'] = $row['id'];
+                        $_SESSION['username'] = $row['name'];
                         $db_obj->close();
                         header('Location: ../index.php');
                     } else {

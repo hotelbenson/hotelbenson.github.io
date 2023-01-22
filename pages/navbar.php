@@ -21,6 +21,13 @@
           <li class="nav-item col-6 col-lg-auto">
             <a class="nav-link py-3 px-0 px-lg-2" href="zimmer.php">Zimmer</a>
           </li>
+          <?php
+              if(isset($_SESSION["user"])) {
+                echo '<li class="nav-item col-6 col-lg-auto">
+                <a class="nav-link py-3 px-0 px-lg-2" href="reservations.php">Reservierungen</a>
+                </li>';
+              }
+          ?>
           <li class="nav-item col-6 col-lg-auto">
             <a class="nav-link py-3 px-0 px-lg-2" href="hilfe.php">Hilfe</a>
           </li>
@@ -34,6 +41,9 @@
                 </li>';
                 echo '<li class="nav-item col-6 col-lg-auto">
                 <a class="nav-link py-3 px-0 px-lg-2" href="users.php">Userverwaltung</a>
+                </li>';
+                echo '<li class="nav-item col-6 col-lg-auto">
+                <a class="nav-link py-3 px-0 px-lg-2" href="all_reservations.php">Reservierungsverwaltung</a>
                 </li>';
               }
               ?>

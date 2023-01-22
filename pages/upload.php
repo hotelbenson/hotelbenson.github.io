@@ -10,8 +10,8 @@
         echo "Connection Error: " . $db_obj->connect_error;
         exit();
     }
-
-    $sql = "INSERT INTO newsposts (picturename, picturepath, header, text) VALUES ('".$_FILES["picture"]["name"]."','../fileupload/".$_FILES["picture"]["name"]."','".$_POST['header']."','".$_POST['comment']."');";
+    $date = date("Y-m-d");
+    $sql = "INSERT INTO newsposts (picturename, picturepath, header, text, date) VALUES ('".$_FILES["picture"]["name"]."','../fileupload/".$_FILES["picture"]["name"]."','".$_POST['header']."','".$_POST['comment']."','".$date."');";
     $result = $db_obj->query($sql);
     $db_obj->close();
 

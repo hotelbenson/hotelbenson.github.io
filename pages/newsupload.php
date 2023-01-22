@@ -59,13 +59,7 @@
                 </div>
                 
             </form>
-        </p>
-        <p>
-            <?php
-                $bilder = scandir("fileupload");
-                //echo "<img src='fileupload/img01.jpg'>"
-            ?>
-        </p>
+            </p>
         </div>
  
             <div class="footer">

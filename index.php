@@ -37,6 +37,13 @@
           <li class="nav-item col-6 col-lg-auto">
             <a class="nav-link py-3 px-0 px-lg-2" href="pages/zimmer.php">Zimmer</a>
           </li>
+          <?php
+              if(isset($_SESSION["user"])) {
+                echo '<li class="nav-item col-6 col-lg-auto">
+                <a class="nav-link py-3 px-0 px-lg-2" href="pages/reservations.php">Reservierungen</a>
+                </li>';
+              }
+          ?>
           <li class="nav-item col-6 col-lg-auto">
             <a class="nav-link py-3 px-0 px-lg-2" href="pages/hilfe.php">Hilfe</a>
           </li>
@@ -50,6 +57,9 @@
                 </li>';
                 echo '<li class="nav-item col-6 col-lg-auto">
                 <a class="nav-link py-3 px-0 px-lg-2" href="pages/users.php">Userverwaltung</a>
+                </li>';
+                echo '<li class="nav-item col-6 col-lg-auto">
+                <a class="nav-link py-3 px-0 px-lg-2" href="pages/all_reservations.php">Reservierungsverwaltung</a>
                 </li>';
               }
           ?>
@@ -107,8 +117,9 @@
                 $sql = "Select * From newsposts";
                 $result = $db_obj->query($sql);
                 while($row = $result->fetch_assoc()) {
+                    $date = date("d.m.Y", strtotime($row['date']));
                     echo '<div class="col-md-6">';
-                    echo "<p><strong>" . $row['header'] . "</strong></p>";
+                    echo "<p><strong>" . $row['header'] . "</strong>   (".$date.")</p>";
                     echo "<p>" . $row['text'] . "</p>";
                     echo "</div>";
                     echo '<div class="col-md-4">';
@@ -133,13 +144,13 @@
                 <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
               </div>
               <div class="toast-body">
-                Welcome back <?php echo isset($_SESSION['user'])?$_SESSION['user']:"General Kenobi"  ?>! Enjoy your stay :)
+                Welcome back <?php echo $_SESSION['username']; ?>! Enjoy your stay :)
               </div>
           </div>
           </div>
         </div>
         <?php 
-        if(isset($_SESSION["user"])) {
+        if(isset($_SESSION["username"])) {
           echo "<script>window.onload = function() {activateToast();}</script>";
         }
       ?>

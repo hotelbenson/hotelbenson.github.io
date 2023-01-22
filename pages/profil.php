@@ -41,10 +41,8 @@
         $message = "Profil erfolgreich geupdated!";
         echo "<script>window.onload = function() {activateToast();}</script>";
 
-        // TODO: Admin-Userverwaltung -> password von nem User ändern ohne das alte passwort zu checken
-        // TODO: Zimmerreservierungen möglich machen
-        // TODO: Reservierungen für User einsehbar machen + Option zu canceln/bestätigen
-        // TODO: Alle Reservierungen für Admins einsehbar machen
+        // TODO: Preisberechnung bei Reservierungen + Datum abchecken
+        // TODO: Bei Newsbeiträgen das Datum dazuschreiben/speichern
 
 
         $db_obj->close();
