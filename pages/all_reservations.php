@@ -6,6 +6,8 @@
         header('Location: ../index.php');
     }
     require_once('dbaccess.php');
+
+    //Wenn eine Statusänderung ausgewählt wurde ->
     if(isset($_GET['id']) && isset($_GET['status'])) {
         $db_obj = new mysqli($host, $user, $dbpassword, $database); 
 
@@ -17,9 +19,9 @@
         echo "<script>window.onload = function() {activateToast();}</script>";
     }
     
-
+    //Wenns noch bockt: Add Sortierung for Start_dt und eingegangenes Datum
 ?>
-
+    
 <!DOCTYPE html>
 <html>
     <head>
@@ -69,6 +71,7 @@
                 </div>
             </form>
         </div>
+        <!-- /Statusfilter -->
 
           <!-- Hier alle Reservierungen anzeigen. -->
           <div class="container-fluid">
@@ -76,7 +79,7 @@
                 <div class='col-md-1'>
                     <strong>User:</strong>
                  </div>
-                <div class='col-md-2'>
+                <div class='col-md-1'>
                     <strong>Zimmer:       </strong>
                  </div>
                 <div class='col-md-1'>
@@ -85,8 +88,14 @@
                 <div class='col-md-1'>
                     <strong>Ende:        </strong>
                 </div>
-                <div class='col-md-2'>
+                <div class='col-md-1'>
                     <strong>Preis:        </strong>
+                </div>
+                <div class='col-md-1'>
+                    <strong>Extras:        </strong>
+                </div>
+                <div class='col-md-2'>
+                    <strong>Eingangsdatum:        </strong>
                 </div>
                 <div class='col-md-1'>
                     <strong>Status:        </strong>
@@ -117,14 +126,14 @@
             } else {
                 $sql = "Select * From reservations;";
             }
-
+            //Hier alle Reservierungen aus der db holen und anzeigen
             $result = $db_obj->query($sql);
             while($row = $result->fetch_assoc()) {
                 echo "<div class='row justify-content-center'>";
                 echo "<div class='col-md-1'>";
                 echo $row['userid'];
                 echo "</div>";
-                echo "<div class='col-md-2'>";
+                echo "<div class='col-md-1'>";
                 echo $row['room_name'];
                 echo "</div>";
                 echo "<div class='col-md-1'>";
@@ -133,8 +142,15 @@
                 echo "<div class='col-md-1'>";
                 echo $row['end_dt'];
                 echo "</div>";
-                echo "<div class='col-md-2'>";
+                echo "<div class='col-md-1'>";
                 echo $row['price'] ."€";
+                echo "</div>";
+                echo "<div class='col-md-1'>";
+                echo $row['extras'];
+                echo "</div>";
+                echo "<div class='col-md-2'>";
+                echo $row['date'];
+                echo $row['status'];
                 echo "</div>";
                 echo "<div class='col-md-1'>";
                 if($row['status'] == 1) {
@@ -147,13 +163,13 @@
                 echo "</div>";
                 echo "<div class='col-md-1 mb-2'>";
                 if($row['status'] == 1) {
-                    echo "<input type='button' onclick='location.href=\"reservations.php?id=".$row['id']."&status=2\"' value='Bestätigen'>";
+                    echo "<input type='button' onclick='location.href=\"all_reservations.php?id=".$row['id']."&status=2\"' value='Bestätigen'>";
                 }
                 echo "<br>";
                 echo "</div>";
                 echo "<div class='col-md-1 mb-2'>";
                 if($row['status'] != 3) {
-                    echo "<input type='button' onclick='location.href=\"reservations.php?id=".$row['id']."&status=3\"' value='Stornieren'>";
+                    echo "<input type='button' onclick='location.href=\"all_reservations.php?id=".$row['id']."&status=3\"' value='Stornieren'>";
                 }
                 echo "<br>";
                 echo "</div>";
@@ -177,6 +193,7 @@
                 </div>
                 </div>
             </div>
+            <!-- Toast -->
           </div>
             <div class="footer">
               <?php include 'footer.php';?>

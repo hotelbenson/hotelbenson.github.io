@@ -15,6 +15,7 @@
     <body>
     <?php session_start(); ?>
     <script>
+        //this needs to be here (for toast), idk why but doesnt work when its in an separate js file
         function activateToast() {
           $('.toast').toast('show');
         }
@@ -69,7 +70,7 @@
           <li class="nav-item col-6 col-lg-auto">
           <?php
             if(isset($_SESSION["user"])) {
-              echo '<a class="nav-link py-3 px-0 px-lg-2" href="pages/profil.php">Profil</a>';
+              echo '<a class="nav-link py-3 px-0 px-lg-2" href="pages/profil.php">Profil ('.$_SESSION['username'] .')</a>';
             } else {
               echo '<a class="nav-link py-3 px-0 px-lg-2" href="pages/register.php">Registrieren</a>';
             }
@@ -90,19 +91,16 @@
         </div>
       </div>
     </nav>
-    <!-- normal nav -->
-        </header>
+    <!-- /normal nav -->
+    </header>
         
-        <div id = "box">
-            <div>
-              <h1 style="margin-left: 10em; margin-top: 1em">Willkommen im Hotel Benson!</h1>
+            <div class="row justify-content-center">
+            <div class="col-md-6">
+              <h1 style="margin-top: 1em">Willkommen im Hotel Benson!</h1>
+            </div>
             </div>
             <hr>
-            <div class="row justify-content-center" style="width: 100vw">
-                <div class="col-md-3">
-                  <h2>News:</h2>      
-                </div>
-            </div>
+        
             <div class="container">
             <div class="row justify-content-center">
               <?php
@@ -114,7 +112,8 @@
                     exit();
                 }
 
-                $sql = "Select * From newsposts";
+                //Get all newsposts ordered by date descending
+                $sql = "Select * From newsposts order by date desc";
                 $result = $db_obj->query($sql);
                 while($row = $result->fetch_assoc()) {
                     $date = date("d.m.Y", strtotime($row['date']));
@@ -132,7 +131,6 @@
               ?>
             </div>
             </div>
-          </div>
           <br/>
           <br/>
           <!-- Toast -->
@@ -149,11 +147,13 @@
           </div>
           </div>
         </div>
+
         <?php 
-        if(isset($_SESSION["username"])) {
-          echo "<script>window.onload = function() {activateToast();}</script>";
-        }
-      ?>
+          //Show that User is logged in when he visits Home
+          if(isset($_SESSION["username"])) {
+            echo "<script>window.onload = function() {activateToast();}</script>";
+          }
+        ?>
         <div class="footer">
         <?php include 'pages/footer.php';?> 
         </div>

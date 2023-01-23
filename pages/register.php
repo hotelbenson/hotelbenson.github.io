@@ -86,6 +86,7 @@
                             }
                         }
 
+                        //If there are no errors, save the user
                         if($_SERVER["REQUEST_METHOD"] == "POST" && $errorcount < 1) {
                             require_once('dbaccess.php');
                             $db_obj = new mysqli($host, $user, $dbpassword, $database); 
@@ -97,13 +98,18 @@
 
                             //Password hashen
                             $hashpw = password_hash($password, PASSWORD_DEFAULT);
+
+                            //User in die db speichern
                             $sql = "INSERT INTO users (name, password, email, phone, adress, city, zip) VALUES ('".$name."','".$hashpw."','".$email."','".$tel."','".$adress."','".$city."','".$zip."');";
                             $result = $db_obj->query($sql);
+
+                            //Userdaten in die Session speichern
                             $_SESSION["user"] = "user";
                             $_SESSION['usermail'] = $email;
                             $_SESSION['userpw'] = $hashpw;
+                            $_SESSION['username'] = $name;
                             
-                            //Get Userid
+                            //Get Userid from db for later
                             $sql = "Select * From users where email = '" . $email . "' and password = '".$hashpw."';";
                             $result = $db_obj->query($sql);
                             $_SESSION['userid'] = $result->fetch_assoc()['id'];
@@ -111,6 +117,8 @@
                             header('Location: ../index.php');
                         }
                     ?>
+            
+            <!-- Registrierungsformular -->
             <form method="post" class="<?php echo (empty($_POST) == 1)?"":"was-validated" ?>">
                 <div class="row justify-content-center" style="width: 100vw">
                     <div class="col-md-4">
@@ -154,7 +162,7 @@
                 </div>
                 <div class="row justify-content-center" style="width: 100vw">
                     <div class="col-md-2">  
-                        <div class="form-group"> <!--<php echo (!$errors["city"])?"was-validated":"needs-validation"?> -->
+                        <div class="form-group">
                             <label for="city">City</label>
                             <input type="text" name="city" class="form-control" id="city" placeholder="Enter City" required value="<?php echo $city ?>">
                             <div class="valid-feedback">Valid.</div>
@@ -169,7 +177,6 @@
                             <div class="invalid-feedback">Please fill out this field.</div>
                         </div>
                     </div>
-                    <!--  && empty($_POST)==0-->
                 </div>
                 <div class="row justify-content-center" style="width: 100vw">
                     <div class="col-md-4">
@@ -210,16 +217,10 @@
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
                 </div>
-                <div class="row justify-content-center" style="width: 100vw">
-                    <div class="col-md-4">
-                    <?php
-                       // echo ($errors["city"])?"<p style=color:red>Please input city!</p>":"<p style=color:green>Success</p>";
-                    ?>
-                    </div>
-                </div>
                 <br/>
                 <br/>
-            </form>         
+            </form>   
+            <!-- /Registrierungsformular -->      
         </div>
 
         <div class="footer">

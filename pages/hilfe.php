@@ -19,6 +19,7 @@
             <hr>
           </div>
         </div>
+        <!-- Content FAQ -->
         <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="accordion" id="accordionExample">
@@ -111,6 +112,8 @@
             </div>
           </div>
         </div>
+        <!-- Content FAQ -->
+
             <div class="footer">
               <?php include 'footer.php';?>
             </div> 

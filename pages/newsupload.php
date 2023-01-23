@@ -1,3 +1,12 @@
+<?php
+    session_start();
+    error_reporting(E_ERROR | E_PARSE);
+    //if this is no admin trying to load this page, send them to index.php
+    if(!isset($_SESSION["user"]) || !$_SESSION["user"] == "admin") {
+        header('Location: ../index.php');
+    }
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -20,7 +29,7 @@
         </div>
         <div class="container-fluid">
         <p>
-            
+            <!-- Formular zum Upload von Newsbeiträgen -->
             <form enctype="multipart/form-data" method="post"
                 action="upload.php" id="upload">
                            

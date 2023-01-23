@@ -12,37 +12,59 @@
         $db_obj = new mysqli($host, $user, $dbpassword, $database);
 
         //Check ob ein neues Passwort eingegeben wurde:
-        if(isset($_POST['password'])) {
+        if(isset($_POST['password']) && $_POST['password'] != "") {
             //wenn ja password auch updaten
 
-            //altes passwort checken
-            if (!password_verify($_POST['oldpassword'], $_SESSION['userpw'])) {
-                $message = "Error: Old password does not match!";
+            //altes passwort checken (nur wenns kein Admin ist)
+            if ($_SESSION['user'] != "admin" && !password_verify($_POST['oldpassword'], $_SESSION['userpw'])) {
+                $message = "Error: Old password does not match!" . $_POST['password'];
                 echo "<script>window.onload = function() {activateToast();}</script>";
+            } else {
+                //neues passwort checken
+                if($_POST['password'] != $_POST['password2']) {
+                    $message = "Error: New passwords do not match!";
+                    echo "<script>window.onload = function() {activateToast();}</script>";
+                } else {
+                    if (isset($_POST['status']) && $_SESSION['user'] == "admin") {
+                        //Status mit updaten 
+                        $stat = $_POST['status'] == "on" ? "1" : "0";
+                        $hashpw = password_hash($_POST['password'], PASSWORD_DEFAULT);
+                        $sql = "Update users SET name = '" . $_POST['name'] . "', password = '" . $hashpw . "', email = '" . $_POST['email'] . "', phone = '" . $_POST['phone'] . "', adress = '" . $_POST['adress'] . "', city = '" . $_POST['city'] . "', zip = '" . $_POST['zip'] . "', status = '" . $stat . "' WHERE id = " . $_SESSION['usertoupdate'] . ";";
+                        $result = $db_obj->query($sql);
+                        $_SESSION['usermail'] = $_POST['email'];
+                        $_SESSION['username'] = $_POST['name'];
+                    } else {
+                        //Status nich anfassen
+                        $sql = "Update users SET name = '" . $_POST['name'] . "', password = '" . $hashpw . "', email = '" . $_POST['email'] . "', phone = '" . $_POST['phone'] . "', adress = '" . $_POST['adress'] . "', city = '" . $_POST['city'] . "', zip = '" . $_POST['zip'] . "' WHERE id = " . $_SESSION['usertoupdate'] . ";";
+                        $result = $db_obj->query($sql);
+                        $_SESSION['usermail'] = $_POST['email'];
+                        $_SESSION['username'] = $_POST['name'];
+                    }
+                    //Success message rausschreiben, dass die Daten geupdated wurden
+                    $message = "Profil erfolgreich geupdated!";
+                    echo "<script>window.onload = function() {activateToast();}</script>";
+                }
             }
-
-            //neues passwort checken
-            if($_POST['password'] != $_POST['password2']) {
-                $message = "Error: New passwords do not match!";
-                echo "<script>window.onload = function() {activateToast();}</script>";
+        } else { 
+            if(isset($_POST['status'])) {
+                //Status mit updaten (Kann eh nur ein Admin mitgeben)
+                $stat = $_POST['status'] == "on" ? "1" : "0";
+                $sql = "Update users SET name = '" . $_POST['name'] . "', email = '" . $_POST['email'] . "', phone = '" . $_POST['phone'] . "', adress = '" . $_POST['adress'] . "', city = '" . $_POST['city'] . "', zip = '" . $_POST['zip'] . "', status = '".$stat. "' WHERE id = ". $_SESSION['usertoupdate'] . ";";
+                $result = $db_obj->query($sql);
+                $_SESSION['usermail'] = $_POST['email'];
+                $_SESSION['username'] = $_POST['name'];
+            } else {
+                //Status nicht anfassen
+                $sql = "Update users SET name = '" . $_POST['name'] . "', email = '" . $_POST['email'] . "', phone = '" . $_POST['phone'] . "', adress = '" . $_POST['adress'] . "', city = '" . $_POST['city'] . "', zip = '" . $_POST['zip'] . "' WHERE id = ". $_SESSION['usertoupdate'] . ";";
+                $result = $db_obj->query($sql);
+                $_SESSION['usermail'] = $_POST['email'];
+                $_SESSION['username'] = $_POST['name'];
             }
-            $stat = $_POST['status'] == "on" ? "1" : "0";
-            $hashpw = password_hash($_POST['password'], PASSWORD_DEFAULT);
-            $sql = "Update users SET name = '" . $_POST['name'] . "', password = '" . $hashpw . "', email = '" . $_POST['email'] . "', phone = '" . $_POST['phone'] . "', adress = '" . $_POST['adress'] . "', city = '" . $_POST['city'] . "', zip = '" . $_POST['zip'] . "', status = '".$stat. "' WHERE id = ". $_SESSION['usertoupdate'] . ";";
-            $result = $db_obj->query($sql);
-            $_SESSION['usermail'] = $_POST['email'];
-        } else {
-            $sql = "Update users SET name = '" . $_POST['name'] . "', email = '" . $_POST['email'] . "', phone = '" . $_POST['phone'] . "', adress = '" . $_POST['adress'] . "', city = '" . $_POST['city'] . "', zip = '" . $_POST['zip'] . "', status = '".$stat. "' WHERE id = ". $_SESSION['usertoupdate'] . ";";
-            $result = $db_obj->query($sql);
-            $_SESSION['usermail'] = $_POST['email'];
+            //Success message rausschreiben, dass die Daten geupdated wurden
+            $message = "Profil erfolgreich geupdated!";
+            echo "<script>window.onload = function() {activateToast();}</script>";    
         }
-
-        //Success message rausschreiben, dass die Daten geupdated wurden
-        $message = "Profil erfolgreich geupdated!";
-        echo "<script>window.onload = function() {activateToast();}</script>";
-
-        // TODO: Preisberechnung bei Reservierungen + Datum abchecken
-
+        
         $db_obj->close();
     }
 ?>
@@ -89,6 +111,7 @@
             }
             $_SESSION['usertoupdate'] = $id;
 
+            //Stammdaten des Users holen um sie anzuzeigen
             $sql = "Select * From users where id = " . $id . ";";
             $result = $db_obj->query($sql);
             while($row = $result->fetch_assoc()) {
@@ -108,7 +131,7 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             <label for="name">Name:</label>
-                            <input type="text" name="name" class="form-control" id="name" value=<?php echo $name; ?>>
+                            <input type="text" name="name" class="form-control" id="name" value="<?php echo $name; ?>">
                         </div>
                     </div>
                 </div>
@@ -116,7 +139,7 @@
                     <div class="col-md-4">
                         <div class="form-group needs-validation">
                             <label for="email">Email:</label>
-                            <input type="email" name="email" class="form-control" id="email" value=<?php echo $email; ?>>
+                            <input type="email" name="email" class="form-control" id="email" value="<?php echo $email; ?>">
                         </div>
                     </div>
                 </div>
@@ -124,7 +147,7 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             <label for="tel">Telefon:</label>
-                            <input type="tel" name ="phone" class="form-control" id="tel" value=<?php echo $phone; ?>>
+                            <input type="tel" name ="phone" class="form-control" id="tel" value="<?php echo $phone; ?>">
                         </div>
                     </div>
                 </div>
@@ -132,7 +155,7 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             <label for="adress">Adresse:</label>
-                            <input type="text" name="adress" class="form-control" id="adress" value=<?php echo $adress; ?>>
+                            <input type="text" name="adress" class="form-control" id="adress" value="<?php echo $adress; ?>">
                         </div>
                     </div>
                 </div>
@@ -140,13 +163,13 @@
                     <div class="col-md-2">  
                         <div class="form-group">
                             <label for="city">Stadt:</label>
-                            <input type="text" name="city" class="form-control" id="city" value=<?php echo $city; ?>>
+                            <input type="text" name="city" class="form-control" id="city" value="<?php echo $city; ?>">
                         </div>
                     </div>
                     <div class="col-md-2">
                         <div class="form-group">
                             <label for="zip">Zip:</label>
-                            <input type="text" name="zip" class="form-control" id="zip" value=<?php echo $zip; ?>>
+                            <input type="text" name="zip" class="form-control" id="zip" value="<?php echo $zip; ?>">
                         </div>
                     </div>
                 </div>

@@ -53,7 +53,7 @@
           <li class="nav-item col-6 col-lg-auto">
             <?php
             if(isset($_SESSION["user"])) {
-              echo '<a class="nav-link py-3 px-0 px-lg-2" href="profil.php">Profil</a>';
+              echo '<a class="nav-link py-3 px-0 px-lg-2" href="profil.php">Profil ('.$_SESSION['username'] .')</a>';
             } else {
               echo '<a class="nav-link py-3 px-0 px-lg-2" href="register.php">Registrieren</a>';
             }

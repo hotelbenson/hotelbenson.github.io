@@ -70,6 +70,7 @@
                         <br>
                     </div>
             </div>
+            <!-- Login Formular -->
            <form class="was-validated" method="post" action="login.php">
                 <div class="row justify-content-center" style="width: 100vw">
                     <div class="col-md-3">
@@ -102,6 +103,8 @@
                             </div>
                         </div> 
                     </form>;
+            <!-- /Login Formular -->
+
             <!-- Toast -->
             <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
                 <div id="liveToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">

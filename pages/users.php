@@ -57,6 +57,7 @@
                 echo "Connection Error: " . $db_obj->connect_error;
                 exit();
             }
+            //Alle user as der db holen und anzeigen
             $sql = "Select * From users";
             $result = $db_obj->query($sql);
             while($row = $result->fetch_assoc()) {

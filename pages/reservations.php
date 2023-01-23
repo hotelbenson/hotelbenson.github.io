@@ -47,7 +47,7 @@
                 <hr>
             </div>
           </div>
-          <!-- Hier alle Reservierungen des Users anzeigen. -->
+          <!-- Hier alle Reservierungen des eingeloggten Users anzeigen. -->
           <div class="container-fluid">
             <div class="row justify-content-center">
                 <div class='col-md-2'>
@@ -59,8 +59,11 @@
                 <div class='col-md-2'>
                     <strong>Ende:</strong>
                 </div>
-                <div class='col-md-2'>
+                <div class='col-md-1'>
                     <strong>Preis:</strong>
+                </div>
+                <div class='col-md-2'>
+                    <strong>Extras:</strong>
                 </div>
                 <div class='col-md-1'>
                     <strong>Status:</strong>
@@ -74,6 +77,7 @@
                 echo "Connection Error: " . $db_obj->connect_error;
                 exit();
             }
+            //Alle Reservierungen des Users aus der db holen
             $sql = "Select * From reservations where userid = " . $_SESSION['userid'];
             $result = $db_obj->query($sql);
             while($row = $result->fetch_assoc()) {
@@ -87,8 +91,11 @@
                 echo "<div class='col-md-2'>";
                 echo $row['end_dt'];
                 echo "</div>";
-                echo "<div class='col-md-2'>";
+                echo "<div class='col-md-1'>";
                 echo $row['price'] ."€";
+                echo "</div>";
+                echo "<div class='col-md-2'>";
+                echo $row['extras'];
                 echo "</div>";
                 echo "<div class='col-md-1'>";
                 if($row['status'] == 1) {

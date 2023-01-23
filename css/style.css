@@ -33,10 +33,6 @@ body, html {
     padding: 1em;
 }
 
-/*.navbar .navbar-nav .nav-link:hover {
-    background-color: #850404; -> könnt man einbauen für so nen hover effect, macht aba responsiveness hin :/
-    color: white;
-}*/
 .navbar-toggler {
     background-color: white;
   }
@@ -57,8 +53,4 @@ body, html {
 
 .accordion-item {
     width: 80%!important;
-}
-
-.white {
-    background-color: white;
 }
