@@ -42,8 +42,6 @@
         echo "<script>window.onload = function() {activateToast();}</script>";
 
         // TODO: Preisberechnung bei Reservierungen + Datum abchecken
-        // TODO: Bei Newsbeiträgen das Datum dazuschreiben/speichern
-
 
         $db_obj->close();
     }

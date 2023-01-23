@@ -47,6 +47,29 @@
                 <hr>
             </div>
           </div>
+
+        <!-- Statusfilter -->
+        <div class="container-fluid mb-5">
+        <form method="post" action="all_reservations.php">
+            <div class="row">
+                    <div class='col-md-2'>
+                        <div class="form-group">
+                            <label for="status">Status: </label>
+                            <select class="form-control" name="status" id="status">
+                              <option></option>  
+                              <option>neu</option>
+                              <option>bestätigt</option>
+                              <option>storniert</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class='col-md-4 mt-4'>
+                        <button type="submit" class="btn btn-primary" id="submit">Filter</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
           <!-- Hier alle Reservierungen anzeigen. -->
           <div class="container-fluid">
             <div class="row justify-content-center">
@@ -81,7 +104,20 @@
                 echo "Connection Error: " . $db_obj->connect_error;
                 exit();
             }
-            $sql = "Select * From reservations;";
+            if(isset($_POST['status']) && $_POST['status'] != "") {
+                if($_POST['status'] == "neu") {
+                    $status = 1;
+                } else if($_POST['status'] == "bestätigt") {
+                    $status = 2;
+                } else {
+                    $status = 3;
+                }
+                $sql = "Select * From reservations where status = ".$status;
+                
+            } else {
+                $sql = "Select * From reservations;";
+            }
+
             $result = $db_obj->query($sql);
             while($row = $result->fetch_assoc()) {
                 echo "<div class='row justify-content-center'>";
