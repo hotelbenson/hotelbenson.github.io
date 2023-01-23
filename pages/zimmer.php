@@ -119,7 +119,7 @@
               <div class="container-fluid">
               <form method="post" action="zimmer.php">
                 <div class="row justify-content-center">
-                    <div class="col-md-4 white">
+                    <div class="col-md-4">
                     <h2>Zimmer reservieren</h2>
                         <div class="form-group">
                             <label for="zimmer">Welches Zimmer möchten Sie reservieren:</label>
@@ -134,7 +134,7 @@
                 </div>
                 <br>
                 <div class="row justify-content-center">
-                  <div class="col-md-4 white">
+                  <div class="col-md-4">
                     <p>Gegen Aufpreis möglich: </p>
                     <ul>
                       <li>
@@ -159,14 +159,14 @@
                   </div>
                 </div>
                 <div class="row justify-content-center">
-                  <div class="col-md-4 white">
+                  <div class="col-md-4">
                     <p>Zeitraum:</p>
                     <input type="text" name="datefilter" value="" />
                   </div>
                 </div>
                 <br>
                 <div class="row justify-content-center">
-                  <div class="col-md-4 white">
+                  <div class="col-md-4">
                   <button type="submit" class="btn btn-primary">Submit</button>
                   </div>
                 </div>
