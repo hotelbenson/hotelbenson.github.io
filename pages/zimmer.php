@@ -122,31 +122,31 @@
                   </div>
                   <div class="carousel-inner">
                     <div class="carousel-item active">
-                      <img src="../uploads/hotel5.jpg" class="d-block" alt="Alpenluftzimmer" width="1000px" style="margin: auto;">
-                      <div class="carousel-caption d-none d-md-block mb-5" style="background-color: lightcyan; border-radius: 7px;">
+                      <img src="../uploads/01_Alpenluft.png" class="d-block" alt="Alpenluftzimmer" height="630px" style="margin: auto;">
+                      <div class="carousel-caption d-none d-md-block mb-6" style="background-color: lightcyan; border-radius: 7px;">
                         <h5>Alpenluftzimmer</h5>
                         <p>Hier können sie so richtig entspannen. Für den niedrigen Preis von 50€ pro Nacht.</p>
                       </div>
                     </div>
                     <div class="carousel-item">
-                      <img src="../uploads/zimmer6.jpg" class="d-block" alt="Präsidentensuite" width="1000px" style="margin: auto;">
-                      <div class="carousel-caption d-none d-md-block mb-5" style="background-color: lightcyan; border-radius: 7px;">
+                      <img src="../uploads/02_Luxussuite.png" class="d-block" alt="Präsidentensuite" width="630px" style="margin: auto;">
+                      <div class="carousel-caption d-none d-md-block mb-6" style="background-color: lightcyan; border-radius: 7px;">
                         <h5>Präsidentensuite</h5>
                         <p>Nur für die reichen Gäste. Hier kann man so richtig flexxen wie viel Geld man hat. Sagen sie ja zu überteuerten Preisen
                           und unnötigen Addons. Diese Suite kann für 1000€ die Nacht gebucht werden.</p>
                       </div>
                     </div>
                     <div class="carousel-item">
-                      <img src="../uploads/zimmer7.jpg" class="d-block" alt="Schluckerzimmer" width="1000px" style="margin: auto;">
-                      <div class="carousel-caption d-none d-md-block mb-5" style="background-color: lightcyan; border-radius: 7px;">
+                      <img src="../uploads/03_Studenten.png" class="d-block" alt="Schluckerzimmer" width="630px" style="margin: auto;">
+                      <div class="carousel-caption d-none d-md-block mb-6" style="background-color: lightcyan; border-radius: 7px;">
                         <h5>Schluckerzimmer</h5>
                         <p>Hier kann man pennen wenn man einfach broke ist. Wir kennen den Struggle. 10€ die Nacht auf unsern Nacken.
                           Gut möglich das sie in der Nacht abgezogen werden idk wir garantieren für nix gl hf.</p>
                       </div>
                     </div>
                     <div class="carousel-item">
-                      <img src="../uploads/hotel5.jpg" class="d-block" alt="Commoner Suite" width="1000px" style="margin: auto;">
-                      <div class="carousel-caption d-none d-md-block mb-5" style="background-color: lightcyan; border-radius: 7px;">
+                      <img src="../uploads/04_Common.png" class="d-block" alt="Commoner Suite" width="630px" style="margin: auto;">
+                      <div class="carousel-caption d-none d-md-block mb-6" style="background-color: lightcyan; border-radius: 7px;">
                         <h5>Commoner Suite</h5>
                         <p>Durchschnittsbleibe für alle Normalos. Erwarten sie nicht zu viel idk was ich hierzu schreiben soll, ich brauch mehr Text, pls send
                           help.</p>
