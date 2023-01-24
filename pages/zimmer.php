@@ -185,6 +185,13 @@
                 <br>
                 <div class="row justify-content-center">
                   <div class="col-md-4">
+                    <p>Zeitraum:</p>
+                    <input type="text" name="datefilter" value="" />
+                  </div>
+                </div>
+                <br>
+                <div class="row justify-content-center">
+                  <div class="col-md-4">
                     <p>Gegen Aufpreis möglich: </p>
                     <ul>
                       <li>
@@ -208,12 +215,7 @@
                     </ul>
                   </div>
                 </div>
-                <div class="row justify-content-center">
-                  <div class="col-md-4">
-                    <p>Zeitraum:</p>
-                    <input type="text" name="datefilter" value="" />
-                  </div>
-                </div>
+                
                 <br>
                 <div class="row justify-content-center">
                   <div class="col-md-4">
@@ -238,6 +240,7 @@
                 </div>
                 </div>
             </div>
+            <br>
             <br>
             <br>
             <br>
