@@ -178,20 +178,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row justify-content-center" style="width: 100vw">
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label for="nugget">Bevorzugte Soße für McNuggets</label>
-                            <select class="form-control" name="nugget" id="nugget">
-                            <option>Ketchup</option>
-                            <option>Curry</option>
-                            <option>Süß-Sauer</option>
-                            <option>Alle</option>
-                            <option>Keine</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
+
                 <div class="row justify-content-center" style="width: 100vw">
                     <div class="col-md-4">
                         <div class="form-group <?php echo (!$errors["password"]) && empty($_POST)==0?"was-validated":""?>">
