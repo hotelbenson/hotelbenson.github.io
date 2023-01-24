@@ -166,64 +166,77 @@
               <br>
 
               <!-- Reservierungsformular -->
-              <div class="container-fluid">
-              <form method="post" action="zimmer.php">
-                <div class="row justify-content-center">
-                    <div class="col-md-4">
-                    <h2>Zimmer reservieren</h2>
-                        <div class="form-group">
-                            <label for="zimmer">Welches Zimmer möchten Sie reservieren:</label>
-                            <select class="form-control" name="zimmer" id="zimmer">
-                              <option>Alpenluftzimmer (50€)</option>
-                              <option>Präsidentensuite (1000€)</option>
-                              <option>Schluckerzimmer (10€)</option>
-                              <option>Commoner Suite (100€)</option>
-                            </select>
+              <?php
+                if(isset($_SESSION['userid'])) {
+                  echo '<div class="container-fluid">
+                  <form method="post" action="zimmer.php">
+                    <div class="row justify-content-center">
+                        <div class="col-md-4">
+                        <h2>Zimmer reservieren</h2>
+                            <div class="form-group">
+                                <label for="zimmer">Welches Zimmer möchten Sie reservieren:</label>
+                                <select class="form-control" name="zimmer" id="zimmer">
+                                  <option>Alpenluftzimmer (50€)</option>
+                                  <option>Präsidentensuite (1000€)</option>
+                                  <option>Schluckerzimmer (10€)</option>
+                                  <option>Commoner Suite (100€)</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <br>
-                <div class="row justify-content-center">
-                  <div class="col-md-4">
-                    <p>Zeitraum:</p>
-                    <input type="text" name="datefilter" value="" />
-                  </div>
-                </div>
-                <br>
-                <div class="row justify-content-center">
-                  <div class="col-md-4">
-                    <p>Gegen Aufpreis möglich: </p>
-                    <ul>
-                      <li>
-                        <div class="form-check">
-                        <label class="form-check-label" for="breakfast">Frühstück (10€ pro Tag)</label>
-                        <input type="checkbox" class="form-check-input" name="breakfast" class="form-control" id="breakfast">
-                        </div>
-                      </li>
-                      <li>
-                        <div class="form-check">
-                        <label class="form-check-label" for="breakfast">Parkplatz (10€ pro Tag)</label>
-                        <input type="checkbox" class="form-check-input" name="parking" class="form-control" id="breakfast">
-                        </div>
-                      </li>
-                      <li>
-                        <div class="form-check">
-                        <label class="form-check-label" for="breakfast">Haustiere (50€ Pauschale)</label>
-                        <input type="checkbox" class="form-check-input" name="animals" class="form-control" id="breakfast">
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-                
-                <br>
-                <div class="row justify-content-center">
-                  <div class="col-md-4">
-                  <button type="submit" class="btn btn-primary">Submit</button>
-                  </div>
-                </div>
-              </form>
-              </div>
+                    <br>
+                    <div class="row justify-content-center">
+                      <div class="col-md-4">
+                        <p>Zeitraum:</p>
+                        <input type="text" name="datefilter" value="" />
+                      </div>
+                    </div>
+                    <br>
+                    <div class="row justify-content-center">
+                      <div class="col-md-4">
+                        <p>Gegen Aufpreis möglich: </p>
+                        <ul>
+                          <li>
+                            <div class="form-check">
+                            <label class="form-check-label" for="breakfast">Frühstück (10€ pro Tag)</label>
+                            <input type="checkbox" class="form-check-input" name="breakfast" class="form-control" id="breakfast">
+                            </div>
+                          </li>
+                          <li>
+                            <div class="form-check">
+                            <label class="form-check-label" for="breakfast">Parkplatz (10€ pro Tag)</label>
+                            <input type="checkbox" class="form-check-input" name="parking" class="form-control" id="breakfast">
+                            </div>
+                          </li>
+                          <li>
+                            <div class="form-check">
+                            <label class="form-check-label" for="breakfast">Haustiere (50€ Pauschale)</label>
+                            <input type="checkbox" class="form-check-input" name="animals" class="form-control" id="breakfast">
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                    
+                    <br>
+                    <div class="row justify-content-center">
+                      <div class="col-md-4">
+                      <button type="submit" class="btn btn-primary">Submit</button>
+                      </div>
+                    </div>
+                  </form>
+                  </div>';
+                } else {
+                echo '<div class= "row justify-content-center">';
+                echo '<div class="col-md-4 py-1">';
+                echo 'Um ein Zimmer reservieren zu können, musst du eingeloggt sein: ';
+                echo '</div>';
+                echo '<div class="col-md-2">';
+                echo "<input type='button' onclick='location.href=\"login.php\"' value='Login/Registrieren'>";
+                echo '</div>';
+                echo '</div>';
+                }
+              ?>
             <!-- /Reservierungsformular -->
     
             <!-- Toast -->
