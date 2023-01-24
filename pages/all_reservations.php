@@ -150,7 +150,6 @@
                 echo "</div>";
                 echo "<div class='col-md-2'>";
                 echo $row['date'];
-                echo $row['status'];
                 echo "</div>";
                 echo "<div class='col-md-1'>";
                 if($row['status'] == 1) {

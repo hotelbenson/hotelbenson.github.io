@@ -31,14 +31,20 @@
                         $hashpw = password_hash($_POST['password'], PASSWORD_DEFAULT);
                         $sql = "Update users SET name = '" . $_POST['name'] . "', password = '" . $hashpw . "', email = '" . $_POST['email'] . "', phone = '" . $_POST['phone'] . "', adress = '" . $_POST['adress'] . "', city = '" . $_POST['city'] . "', zip = '" . $_POST['zip'] . "', status = '" . $stat . "' WHERE id = " . $_SESSION['usertoupdate'] . ";";
                         $result = $db_obj->query($sql);
-                        $_SESSION['usermail'] = $_POST['email'];
-                        $_SESSION['username'] = $_POST['name'];
+                        
+                        if (($_SESSION['userid'] == $_SESSION['usertoupdate'])){
+                            $_SESSION['usermail'] = $_POST['email'];
+                            $_SESSION['username'] = $_POST['name'];
+                        }
                     } else {
                         //Status nich anfassen
                         $sql = "Update users SET name = '" . $_POST['name'] . "', password = '" . $hashpw . "', email = '" . $_POST['email'] . "', phone = '" . $_POST['phone'] . "', adress = '" . $_POST['adress'] . "', city = '" . $_POST['city'] . "', zip = '" . $_POST['zip'] . "' WHERE id = " . $_SESSION['usertoupdate'] . ";";
                         $result = $db_obj->query($sql);
-                        $_SESSION['usermail'] = $_POST['email'];
-                        $_SESSION['username'] = $_POST['name'];
+                        
+                        if (($_SESSION['userid'] == $_SESSION['usertoupdate'])){
+                            $_SESSION['usermail'] = $_POST['email'];
+                            $_SESSION['username'] = $_POST['name'];
+                        }
                     }
                     //Success message rausschreiben, dass die Daten geupdated wurden
                     $message = "Profil erfolgreich geupdated!";
@@ -51,14 +57,18 @@
                 $stat = $_POST['status'] == "on" ? "1" : "0";
                 $sql = "Update users SET name = '" . $_POST['name'] . "', email = '" . $_POST['email'] . "', phone = '" . $_POST['phone'] . "', adress = '" . $_POST['adress'] . "', city = '" . $_POST['city'] . "', zip = '" . $_POST['zip'] . "', status = '".$stat. "' WHERE id = ". $_SESSION['usertoupdate'] . ";";
                 $result = $db_obj->query($sql);
-                $_SESSION['usermail'] = $_POST['email'];
-                $_SESSION['username'] = $_POST['name'];
+                if (($_SESSION['userid'] == $_SESSION['usertoupdate'])){
+                    $_SESSION['usermail'] = $_POST['email'];
+                    $_SESSION['username'] = $_POST['name'];
+                }
             } else {
                 //Status nicht anfassen
                 $sql = "Update users SET name = '" . $_POST['name'] . "', email = '" . $_POST['email'] . "', phone = '" . $_POST['phone'] . "', adress = '" . $_POST['adress'] . "', city = '" . $_POST['city'] . "', zip = '" . $_POST['zip'] . "' WHERE id = ". $_SESSION['usertoupdate'] . ";";
                 $result = $db_obj->query($sql);
-                $_SESSION['usermail'] = $_POST['email'];
-                $_SESSION['username'] = $_POST['name'];
+                if (($_SESSION['userid'] == $_SESSION['usertoupdate'])){
+                    $_SESSION['usermail'] = $_POST['email'];
+                    $_SESSION['username'] = $_POST['name'];
+                }
             }
             //Success message rausschreiben, dass die Daten geupdated wurden
             $message = "Profil erfolgreich geupdated!";
@@ -104,7 +114,7 @@
             }
 
             //If Admin is viewing the page and GET parameter is set -> display page of user with that id. If not display the page of the current user.
-            if ($_SESSION["user"] == "admin" && isset($_GET['id'])) {
+            if(($_SESSION["user"] == "admin") && (isset($_GET['id']))){
                 $id = $_GET['id'];
             } else {
                 $id = $_SESSION['userid'];

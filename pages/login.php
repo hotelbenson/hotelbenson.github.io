@@ -71,14 +71,12 @@
                     </div>
             </div>
             <!-- Login Formular -->
-           <form class="was-validated" method="post" action="login.php">
+           <form class method="post" action="login.php">
                 <div class="row justify-content-center" style="width: 100vw">
                     <div class="col-md-3">
                        <div class="form-group">
                             <label for="exampleInputEmail1">Email address</label>
                             <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" required>
-                            <div class="valid-feedback">Valid.</div>
-                            <div class="invalid-feedback">Please fill out this field.</div>
                         </div>
                     </div>
                         </div> 
@@ -87,8 +85,6 @@
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Password</label>
                                     <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
-                                    <div class="valid-feedback">Valid.</div>
-                                    <div class="invalid-feedback">Please fill out this field.</div>
                                 </div>
                             </div>
                         </div>
