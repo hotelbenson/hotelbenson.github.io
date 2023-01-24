@@ -50,7 +50,7 @@
             </div>
           </div>
 
-        <!-- Statusfilter -->
+        <!-- Statusfilter, Sortierung -->
         <div class="container-fluid mb-5">
         <form method="post" action="all_reservations.php">
             <div class="row">
@@ -62,6 +62,18 @@
                               <option>neu</option>
                               <option>bestätigt</option>
                               <option>storniert</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class='col-md-2'>
+                        <div class="form-group">
+                            <label for="status">Sort by: </label>
+                            <select class="form-control" name="sort" id="sort">
+                              <option></option>  
+                              <option>Start absteigend</option>
+                              <option>Start aufsteigend</option>
+                              <option>Eingangsdatum aufsteigend</option>
+                              <option>Eingangsdatum absteigend</option>
                             </select>
                         </div>
                     </div>
@@ -113,6 +125,13 @@
                 echo "Connection Error: " . $db_obj->connect_error;
                 exit();
             }
+
+            //if sortierung nicht extra ausgewählt, sortier es standardmäßig nach Start absteigend
+            if(!isset($_POST['sort'])) {
+                $_POST['sort'] = "Start absteigend";
+            }
+
+            //wenn nach status gefiltert wurde, dann filter das (auch checken ob sortiert wurde)
             if(isset($_POST['status']) && $_POST['status'] != "") {
                 if($_POST['status'] == "neu") {
                     $status = 1;
@@ -121,11 +140,38 @@
                 } else {
                     $status = 3;
                 }
-                $sql = "Select * From reservations where status = ".$status;
-                
+                if($_POST['sort'] == "Start aufsteigend") {
+                    $sort = "asc";
+                    $date = "start_dt";
+                } else if($_POST['sort'] == "Start absteigend") {
+                    $sort = "desc";
+                    $date = "start_dt";
+                } else if($_POST['sort'] == "Eingangsdatum aufsteigend") {
+                    $sort = "asc";
+                    $date = "date";
+                } else {
+                    $sort = "desc";
+                    $date = "date";
+                }
+                $sql = "Select * From reservations where status = ".$status." order by " .$date." ".$sort;
             } else {
-                $sql = "Select * From reservations;";
+                //wenn nicht nach status gefiltert wurden, aber vll sortiert wurde
+                if($_POST['sort'] == "Start aufsteigend") {
+                    $sort = "asc";
+                    $date = "start_dt";
+                } else if($_POST['sort'] == "Start absteigend") {
+                    $sort = "desc";
+                    $date = "start_dt";
+                } else if($_POST['sort'] == "Eingangsdatum aufsteigend") {
+                    $sort = "asc";
+                    $date = "date";
+                } else {
+                    $sort = "desc";
+                    $date = "date";
+                }
+                $sql = "Select * From reservations order by " .$date." ".$sort;
             }
+
             //Hier alle Reservierungen aus der db holen und anzeigen
             $result = $db_obj->query($sql);
             while($row = $result->fetch_assoc()) {

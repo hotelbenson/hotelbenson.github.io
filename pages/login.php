@@ -35,7 +35,7 @@
                 $result = $db_obj->query($sql);
                 $row = $result->fetch_assoc();
                 
-                if($row['status']==0) {
+                if(mysqli_num_rows($result) > 0 && $row['status']==0) {
                     //Wenn der User deaktiviert ist, lass ihn nicht einloggen.
                     $message = "Your account is deactivated. If you need further information pleas contact an admin.";
                     echo "<script>window.onload = function() {activateToast();}</script>";
