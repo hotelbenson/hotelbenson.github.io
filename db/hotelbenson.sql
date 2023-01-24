@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 23. Jan 2023 um 17:39
--- Server-Version: 10.4.24-MariaDB
--- PHP-Version: 8.1.6
+-- Generation Time: Jan 24, 2023 at 04:13 PM
+-- Server version: 10.4.25-MariaDB
+-- PHP Version: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Datenbank: `hotelbenson`
+-- Database: `hotelbenson`
 --
 
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `newsposts`
+-- Table structure for table `newsposts`
 --
 
 CREATE TABLE `newsposts` (
@@ -37,7 +37,7 @@ CREATE TABLE `newsposts` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Daten für Tabelle `newsposts`
+-- Dumping data for table `newsposts`
 --
 
 INSERT INTO `newsposts` (`id`, `picturename`, `picturepath`, `header`, `text`, `date`) VALUES
@@ -50,7 +50,7 @@ INSERT INTO `newsposts` (`id`, `picturename`, `picturepath`, `header`, `text`, `
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `reservations`
+-- Table structure for table `reservations`
 --
 
 CREATE TABLE `reservations` (
@@ -67,26 +67,22 @@ CREATE TABLE `reservations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Daten für Tabelle `reservations`
+-- Dumping data for table `reservations`
 --
 
 INSERT INTO `reservations` (`id`, `roomid`, `start_dt`, `end_dt`, `status`, `userid`, `price`, `room_name`, `date`, `extras`) VALUES
-(1, 2, '0000-00-00', '0000-00-00', 3, 15, 1000, 'Präsidentensuite', NULL, ''),
-(2, 2, '2023-01-01', '2023-01-02', 3, 15, 1000, 'Präsidentensuite', NULL, ''),
-(3, 2, '2023-01-01', '2023-01-02', 3, 15, 1000, 'Präsidentensuite', NULL, ''),
-(4, 1, '2023-01-24', '2023-01-27', 3, 15, 50, 'Array', NULL, ''),
-(5, 1, '2023-01-02', '2023-01-05', 3, 15, 50, 'Alpenluftzimmer', NULL, ''),
-(6, 3, '2023-01-10', '2023-01-14', 3, 15, 10, 'Schluckerzimmer', NULL, ''),
-(7, 1, '2023-01-09', '2023-01-13', 3, 15, 50, 'Alpenluftzimmer', NULL, ''),
-(8, 4, '2023-01-18', '2023-01-19', 3, 16, 100, 'Commoner Suite', '2023-01-23', ''),
-(9, 2, '2023-03-14', '2023-03-15', 2, 16, 1050, 'Präsidentensuite', '2023-01-23', ''),
-(10, 2, '2023-03-20', '2023-03-23', 2, 16, 1110, 'Präsidentensuite', '2023-01-23', ''),
-(11, 1, '2023-02-01', '2023-02-02', 1, 16, 110, 'Alpenluftzimmer', '2023-01-23', 'Parkplatz, Haustiere');
+(8, 4, '2023-01-18', '2023-01-19', 3, 16, 200, 'Commoner Suite', '2023-01-15', ''),
+(9, 2, '2023-03-14', '2023-03-15', 2, 16, 2000, 'Präsidentensuite', '2023-01-23', ''),
+(10, 2, '2023-03-20', '2023-03-23', 2, 16, 4000, 'Präsidentensuite', '2023-01-20', ''),
+(11, 1, '2023-02-01', '2023-02-02', 1, 16, 170, 'Alpenluftzimmer', '2023-01-23', 'Parkplatz, Haustiere'),
+(12, 1, '2023-01-24', '2023-01-26', 1, 18, 200, 'Alpenluftzimmer', '2023-01-24', 'Haustiere'),
+(13, 4, '2023-01-28', '2023-01-31', 1, 19, 450, 'Commoner Suite', '2023-01-24', 'Haustiere'),
+(14, 1, '2023-01-01', '2023-01-02', 1, 18, 120, 'Alpenluftzimmer', '2023-01-01', 'Frühstück');
 
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `rooms`
+-- Table structure for table `rooms`
 --
 
 CREATE TABLE `rooms` (
@@ -96,7 +92,7 @@ CREATE TABLE `rooms` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Daten für Tabelle `rooms`
+-- Dumping data for table `rooms`
 --
 
 INSERT INTO `rooms` (`id`, `name`, `price`) VALUES
@@ -108,7 +104,7 @@ INSERT INTO `rooms` (`id`, `name`, `price`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
@@ -125,75 +121,75 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Daten für Tabelle `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `name`, `password`, `email`, `role`, `status`, `phone`, `adress`, `city`, `zip`) VALUES
 (8, 'Tomer', '$2y$10$1lQ9qzDSYsJWchH/.UJS7eJaDpftXB6y.kjNlK2QKkltaRovcxZs.', 'tom@gmail.com', 2, 1, '068012345832', 'Haupstraße', 'Wien', 1120),
-(10, 'Test', '$2y$10$XMMvPeCHBAv/HuLZpCzQluoaEZcsTTN2vYRgQNwVFVQd2QAUskMvW', 'test1@gmail.com', 1, 1, '123456789', 'Strasse 1', 'Stadt', 2000),
-(11, 'Testhawara', '$2y$10$411PDW5m4/4gVoUD0QUlWu05cmWI2zso.nCzIbiEH4nMTVeJfb8qW', 'test@gmail.com', 2, 1, '765444565', 'ttttt', 'cityyyyy', 1234),
-(12, 'Hawara2', '$2y$10$EVPs/8MxBXvKO65n4ZUMxu6vwtVL02L5zltcxOvs9rML21tY6AC62', 'harawa2@gmail.com', 1, 1, '', '', '', 0),
-(13, 'Max', '$2y$10$MsGHdxqnyKOpRaVtwh/9MeuBSyoD4o/l98CqnEbjBkfR/eHcRVnS.', 'max@gmail.com', 1, 1, '123', '123', '123', 123),
-(14, 'Hu', '$2y$10$593ye4ujYuF7n0WH1Nq9..Qq.jf9xHjNNj29L0U8oDc.oSr.ARq22', 'hu@gmail.com', 1, 0, '1234567', 'wasdfg', 'asdfg', 124),
-(15, 'gigi', '$2y$10$SWh7MCkxM1Rlu.Vimn1mpezQK32Ig9jmiCUFGdOM/QCYMoFYLeppm', '1234@gmail.com', 2, 1, '1234567', 'sadfg', '12345', 1234),
-(16, 'Tom Meier', '$2y$10$SsB7eqjhX03tvCO8kn4T/ung1yFvzIdotpRVUnvIAuk0vEB7PfKXK', 't@gmail.com', 1, 1, '12345678', 'sadada', 'sadad', 1223),
-(17, 'Tomm1', '$2y$10$xT9dzPdDmJvBkj1Kn/.DUOaENEIGsnvo1Ye8GTi53V0xwGwtu1KCa', 't2@gmail.com', 1, 0, '123432', 'asdadads', 'asdadsa', 12132);
+(10, 'Test', '', 'test1@gmail.com', 1, 0, '123456789', 'Strasse 1', 'Stadt', 2000),
+(13, 'Max', '$2y$10$pvPgzSlMOmJ7EaXH53Ps4uGRx62lFOIJ7RlqUwnnAqrsaX9Axx5hG', 'max@gmail.com', 1, 1, '123', '123', '123', 123),
+(15, 'Admin1234', '$2y$10$SWh7MCkxM1Rlu.Vimn1mpezQK32Ig9jmiCUFGdOM/QCYMoFYLeppm', '1234@gmail.com', 2, 1, '1234567', 'sadfg', '12345', 1234),
+(16, 'Tom Meier', '$2y$10$FsV/GIMmbk9zG.VTsjMBZuPyGPlseFek2.SSxDyA0tJY9pnZOvjnq', 't@gmail.com', 1, 1, '12345678', 'sadada', 'sadad', 1223),
+(17, 'Tom', '', 't2@gmail.com', 1, 0, '123432', 'asdadads', 'asdadsa', 12132),
+(18, 'David Haas', '$2y$10$/6ky.3EUD6hgUIa3nxmJP.GNa1Mu2X3clHVsliH84.S0ILz69lNz.', 'wi22b038@technikum-wien.at', 2, 1, '0664/1234567', 'Mustergasse 12.5', '2120', 0),
+(19, 'Kunde McKundenface', '$2y$10$5yXBEEO3Mypa86oEL3n7h.2Qv2nCxUUBXRHuQWAouYR6vnGwSm3LK', 'kunde@kunde.at', 1, 1, '01234/132412', 'Mustergasse 13', 'Wien', 1220),
+(20, 'Präsident', '$2y$10$2jiGKkGQnzReO4pNu0aSUehIPduYsv0qdNEgGFWYbhYNOOpJO01bq', 'pres@us.gov', 1, 1, '012323', 'White House', 'Washington', 12345);
 
 --
--- Indizes der exportierten Tabellen
+-- Indexes for dumped tables
 --
 
 --
--- Indizes für die Tabelle `newsposts`
+-- Indexes for table `newsposts`
 --
 ALTER TABLE `newsposts`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indizes für die Tabelle `reservations`
+-- Indexes for table `reservations`
 --
 ALTER TABLE `reservations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indizes für die Tabelle `rooms`
+-- Indexes for table `rooms`
 --
 ALTER TABLE `rooms`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indizes für die Tabelle `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT für exportierte Tabellen
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT für Tabelle `newsposts`
+-- AUTO_INCREMENT for table `newsposts`
 --
 ALTER TABLE `newsposts`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT für Tabelle `reservations`
+-- AUTO_INCREMENT for table `reservations`
 --
 ALTER TABLE `reservations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
--- AUTO_INCREMENT für Tabelle `rooms`
+-- AUTO_INCREMENT for table `rooms`
 --
 ALTER TABLE `rooms`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT für Tabelle `users`
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
