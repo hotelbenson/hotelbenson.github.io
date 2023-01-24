@@ -48,6 +48,7 @@
     $date2 = new DateTime($end);
     $diff = $date1->diff($date2);
     $days = $diff->days;
+    $price = $price * $days;
     if($_POST['breakfast'] == "on") {
       $price = $price + 10 * $days;
       $extras = "Frühstück, ";
