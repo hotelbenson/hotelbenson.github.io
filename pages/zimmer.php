@@ -21,7 +21,7 @@
     $sql = "SELECT * FROM rooms WHERE name = '".$roomname[0]."' 
         AND NOT EXISTS (
             SELECT 1 FROM reservations 
-            WHERE roomid = rooms.id 
+            WHERE roomid = rooms.id and status in (1,2)
             AND (
                 ('$start' BETWEEN start_dt AND end_dt) 
                 OR ('$end' BETWEEN start_dt AND end_dt)
